@@ -1,0 +1,55 @@
+.site-header {
+    display: flex;
+    position: fixed;
+    justify-content: space-around;
+    background: #369;
+    align-items: center;
+    padding: 0.5em 0;
+    width: 100%;
+    z-index: 100000;
+}
+
+.site-name {
+    color: #FFF;
+    transition: transform 0.7s ease-in-out;
+}
+
+.site-name:hover {
+    cursor: pointer;
+    transform: scale(0.9);
+}
+
+.search-button {
+    opacity: 70%;
+}
+
+.search-bar, 
+.search-button {
+    padding: 0.2em 1em;
+    border: 0;
+    border-radius: 0.4em;
+}
+
+.search-bar {
+    background-color: #fff;
+    opacity: 50%;
+    margin-right: 0.5em;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 1em;
+}
+
+.main-nav ul li {
+    list-style: none;
+}
+
+.main-nav ul li a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.main-nav ul li a:hover {
+    text-decoration: underline;
+}
