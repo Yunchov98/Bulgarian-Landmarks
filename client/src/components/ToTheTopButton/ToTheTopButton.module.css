@@ -1,0 +1,10 @@
+.to-the-top i {
+    font-size: 2em;
+    position: fixed;
+    z-index: 1000000000;
+    bottom: 0.5em;
+    right: 1em;
+    cursor: pointer;
+    color: #000;
+    opacity: 90%;
+}
