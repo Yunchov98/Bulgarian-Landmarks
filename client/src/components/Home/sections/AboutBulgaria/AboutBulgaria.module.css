@@ -1,0 +1,28 @@
+@import url('../../css/animation.css');
+
+.about-bulgaria {
+    background-color: #fff;
+    padding: 0 2em 1em 2em;
+    border-radius: 0.3em;
+    animation: 4s alternate slide-down;
+}
+
+.section-title {
+    text-align: center;
+    padding: 0.6em 0 1em 0;
+    font-size: 2em;
+}
+
+.banner {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.fa-icon {
+    font-size: 4em;
+    text-align: center;
+}
+
+.item-text {
+    text-align: center;
+}
