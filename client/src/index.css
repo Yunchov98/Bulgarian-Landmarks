@@ -24,7 +24,6 @@ body {
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='mages/mountain-river-forest-sky-landscapes.jpg', sizingMethod='scale');
     -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/main_bg_2.jpg', sizingMethod='scale')";
     overflow-x: hidden;
-    /* margin: 1em auto; */
   }
 
   #root {
