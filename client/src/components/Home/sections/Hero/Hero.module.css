@@ -1,0 +1,53 @@
+@import url('../../css/animation.css');
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    padding-top: 2em;
+    margin-bottom: 5em;
+}
+
+.hero article {
+    color: #FFF;
+    text-align: center;
+    animation: 4s alternate slide-down;
+}
+
+.img-wrapper  {
+    display: flex;
+}
+
+.img-wrapper ul {
+    display: flex;
+    gap: 1em;
+}
+
+.img-wrapper img {
+    display: block;
+    width: auto;
+    height: 100%;
+    position: relative;
+}
+
+.img-wrapper ul li {
+    display: block;
+    width: 10em;
+    height: 25em;
+    overflow: hidden;
+    box-shadow: 0 0 1em 0.5em rgba(0, 0, 0, 0.2);
+    transition: width 1s ease-in-out;
+    border-radius: 0.3em;
+    animation: 4s alternate slide-up;
+}
+
+.img-wrapper li:hover {
+    width: 33em;
+}
+
+.img-wrapper li p {
+    position: absolute;
+    color: #FFF;
+    font-weight: bold;
+}
