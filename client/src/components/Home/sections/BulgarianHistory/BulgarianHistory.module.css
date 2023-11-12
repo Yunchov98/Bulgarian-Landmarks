@@ -1,0 +1,57 @@
+@import url('../../css/responsive.css');
+
+.section-title {
+    text-align: center;
+    padding: 0.6em 0 1em 0;
+    font-size: 2em;
+}
+
+.bulgarian-history {
+    background-color: #fff;
+    margin: 2em 1em 0 1em;
+    padding: 1em 3em 2em 3em;
+    border-radius: 0.3em;
+}
+
+.bulgarian-history .section-title {
+    padding-bottom: 0;
+}
+
+.wiki-navigate {
+    text-align: center;
+    padding-bottom: 1.5em;
+}
+
+.wiki-navigate a {
+    text-decoration: none;
+    color: #369;
+}
+
+.wiki-navigate a:hover {
+    text-decoration: underline;
+}
+
+.history-section-item:not(:last-child) {
+    padding-bottom: 2em;
+}
+
+.history-section-item {
+    padding: 0 2em 0 2em;
+}
+
+.article-title {
+    text-align: center;
+    padding-bottom: 1em;
+    text-decoration: underline;
+}
+
+.artice-img {
+    width: 10em;
+    float: left;
+    margin-right: 1em;
+    padding-top: 0.5em;
+}
+
+.article-description {
+    text-align: left;
+}
