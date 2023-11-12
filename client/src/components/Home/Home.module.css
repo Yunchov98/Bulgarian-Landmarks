@@ -1,11 +1,12 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
-    min-height: 100vh;
+    /* height: 100vh; */
     gap: 2em;
-    padding: 2em;
+    padding-top: 2em;
+    margin-bottom: 5em;
 }
 
 .wrapper article {
@@ -69,9 +70,30 @@
     }
 }
 
-.test {
-    animation: 4s alternate slide-up;
-
+.about-bulgaria {
+    background-color: #FFF;
+    padding: 0 2em 1em 2em;
+    border-radius: 0.3em;
+    animation: 4s alternate slide-down;
 }
 
+.about-bulgaria h3 {
+    text-align: center;
+    padding:0.6em 0 1em 0;
+    font-size: 2em;
+}
+
+.banner {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.fa-icon {
+    font-size: 4em;
+    text-align: center;
+}
+
+.item-text {
+    text-align: center;
+}
 
