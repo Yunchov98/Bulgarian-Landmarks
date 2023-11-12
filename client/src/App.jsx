@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Catalog from './components/Catalog/Catalog';
 import Footer from './components/Footer/Footer';
+import ToTheTopButton from './components/ToTheTopButton/ToTheTopButton';
 
 function App() {
     return (
@@ -17,6 +18,8 @@ function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='/catalog' element={<Catalog />} />
                 </Routes>
+
+                <ToTheTopButton />
             </main>
 
             <Footer />
