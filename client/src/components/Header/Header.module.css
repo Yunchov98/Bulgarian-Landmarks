@@ -12,6 +12,7 @@
 .site-name {
     color: #FFF;
     transition: transform 0.7s ease-in-out;
+    text-decoration: none;
 }
 
 .site-name:hover {
