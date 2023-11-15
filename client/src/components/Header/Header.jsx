@@ -1,13 +1,15 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import toTheTop from '../../utils/toTheTop';
 
 import styles from './Header.module.css';
 
 export default function Header() {
     return (
         <header className={styles['site-header']}>
-            <NavLink to={'/'} className={styles['site-name']}>
+            <Link onClick={() => toTheTop('instant')} to={'/'} className={styles['site-name']}>
                 <h2>Bulgarian Landmarks</h2>
-            </NavLink>
+            </Link>
             <form className={styles['search-form']}>
                 <input
                     className={styles['search-bar']}
@@ -25,7 +27,7 @@ export default function Header() {
             <nav className={styles['main-nav']}>
                 <ul>
                     <li>
-                        <NavLink to="/catalog">Catalog</NavLink>
+                        <Link to="/catalog">Catalog</Link>
                     </li>
                     <li>
                         <a href="#">About us</a>
