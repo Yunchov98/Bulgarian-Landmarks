@@ -1,110 +1,178 @@
+.catalog-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+.catalog-section {
+    background-color: #eee;
+    padding: 2em 0;
+    scroll-behavior: smooth;
+}
+
 .catalog-heading {
     text-align: center;
-    padding: 1em 0;
-    animation: 1.5s alternate slide-down;
-    color: #DDD;
+    padding-bottom: 1em;
+    color: #369;
     font-weight: 900;
     font-size: 2em;
 }
 
 .content-wrapper {
     display: flex;
-    gap: 2em;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
 }
 
-.item-wrapper {
+.post-item {
     background-color: #fff;
-    border-radius: 0.3em;
-    box-shadow: 0 0 0.5em 0.1em #ddd;
-    position: relative;
-    flex: 0 1 600px;
+    overflow: hidden;
+    width: 30em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.2em 0.1em #ddd;
 }
 
-img {
-    height: auto;
-    width: 100%;
-    border-top-left-radius: 0.3em;
-    border-top-right-radius: 0.3em;
+.user-info {
+    display: flex;
+    gap: 1em;
+    padding: 0.5em 1em 0.5em 1em;
+    align-items: center;
 }
 
-.item {
-    padding: 1em 0 1em 1em;
+.user-img {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
 }
 
-.item-name {
-    text-align: center;
+.username {
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.posted-on {
+    font-size: 0.6em;
+    color: rgb(99, 99, 99);
+}
+
+.content-description,
+.likes {
+    padding: 0 1em 0.5em 1em;
+    font-size: 0.9em;
+}
+
+.likes {
+    display: flex;
+    justify-content: space-between;
+    color: #636363;
+}
+
+.likes-count {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+}
+
+.likes-count i {
+    color: #369;
+}
+
+.likes-count i,
+.likes .comments-count {
+    padding-right: 0.2em;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    padding-top: 0.5em;
     padding-bottom: 0.5em;
-    font-size: 1.4em;
 }
 
-.item-description {
-    padding-bottom: 1em;
-}
-
-.fs-icon {
-    position: absolute;
-    top: 0.5em;
-    right: 1.3em;
-    font-size: 1.2em;
-    color: #fff;
+.buttons > * {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
     cursor: pointer;
+    padding: 0 2em 0 2em;
 }
 
-.fs-icon:hover {
-    transform: scale(1.2);
-    .like-text {
-        display: block;
-    }
+.like-button,
+.comment-button-wrapper,
+.comment-button {
+    color: #797979;
 }
 
-.like-text {
-    font-size: 0.4em;
-    text-align: center;
-    display: none;
+.comment-button {
+    text-decoration: none;
 }
 
-.item-wrapper:nth-child(odd) {
-    animation: 1.5s ease-in-out slide-left;
+.like-button:hover,
+.comment-button-wrapper:hover {
+    background-color: #eee;
 }
 
-.item-wrapper:nth-child(even) {
-    animation: 1.5s ease-in-out slide-right;
+.comments {
+    padding: 1em 1em 0.5em 1em;
 }
 
-@keyframes slide-left {
-    from {
-        transform: translateX(-200vw);
-    }
-
-    to {
-        transform: translateX(0);
-    }
+.comment {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
 }
 
-@keyframes slide-right {
-    from {
-        transform: translateX(200vw);
-    }
-
-    to {
-        transform: translateX(0);
-    }
+.comment:not(:last-child) {
+    margin-bottom: 0.5em;
 }
 
-@keyframes slide-down {
-    from {
-        transform: translateY(-200vh);
-    }
-
-    to {
-        transform: translateY(0);
-    }
+.comment-info {
+    background-color: #ddd;
+    padding: 0.2em 0.4em 0.2em 0.4em;
+    border-radius: 0.7em;
 }
 
-@media screen and (width <= 400) {
-    .like-text {
-        display: none;
-    }
+.comment-info .username {
+    font-size: 0.6em;
+}
+
+.comment-info .description {
+    font-size: 0.7rem;
+}
+
+.comment-user-img {
+    height: 2em;
+    width: 2em;
+    border-radius: 50%;
+}
+
+.add-comment {
+    display: flex;
+    align-items: center;
+    padding: 0.2em 1em 0.5em 1em;
+    gap: 0.2em;
+}
+
+.comment-area {
+    position: relative;
+}
+
+.comment-input {
+    padding: 0.8em 25em 0.8em 2em;
+    border-radius: 0.4em;
+    border: 0;
+    background-color: #eee;
+}
+
+.comment-area i {
+    position: absolute;
+    top: 0.7em;
+    right: 1em;
+    color: #aaa;
+    font-size: 0.8em;
+    cursor: no-drop;
 }
