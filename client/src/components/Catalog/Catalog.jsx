@@ -1,6 +1,18 @@
+import { useRef } from 'react';
+
 import styles from './Catalog.module.css';
 
 export default function Catalog() {
+    const inputRef = useRef(null);
+    const mediaSectionRef = useRef(null);
+
+    const focusInput = () => {
+        if (inputRef.current && mediaSectionRef.current) {
+            mediaSectionRef.current.scrollIntoView({behavior: 'smooth'})
+            inputRef.current.focus();
+        }
+    };
+
     return (
         <section className={styles['catalog-section']}>
             <h2 className={styles['catalog-heading']}>Landmarks</h2>
@@ -22,29 +34,32 @@ export default function Catalog() {
                     <section className={styles['content-description']}>
                         <p>This is a landmark in Bulgaria</p>
                     </section>
-                    <section id="media" className={styles['media']}>
+                    <section ref={mediaSectionRef} id="media" className={styles['media']}>
                         <img src="/images/R.jpg" alt="" />
                     </section>
                     <section className={styles['likes']}>
                         <div className={styles['likes-count']}>
-                            <i class="fa-solid fa-thumbs-up"></i>
+                            <i className="fa-solid fa-thumbs-up"></i>
                             <p>0</p>
                         </div>
                         <p className={styles['comments-count']}>0 comments</p>
                     </section>
                     <section className={styles['buttons']}>
                         <div className={styles['like-button']}>
-                            <i class="fa-solid fa-thumbs-up"></i>
+                            <i className="fa-solid fa-thumbs-up"></i>
                             <p>Like</p>
                         </div>
-                        <div className={styles['comment-button-wrapper']}>
-                            <i class="fa-solid fa-comment"></i>
-                            <a
-                                href="#media"
+                        <div
+                            className={styles['comment-button-wrapper']}
+                        >
+                            <i className="fa-solid fa-comment"></i>
+                            <p
+                            onClick={focusInput}
+                                // href="#media"
                                 className={styles['comment-button']}
                             >
                                 Comment
-                            </a>
+                            </p>
                         </div>
                     </section>
                     <section className={styles['comments']}>
@@ -72,14 +87,16 @@ export default function Catalog() {
                         />
                         <div className={styles['comment-area']}>
                             <input
+                                ref={inputRef}
                                 className={styles['comment-input']}
                                 type="text"
                                 placeholder="Write a comment..."
                             />
-                            <i class="fa-solid fa-paper-plane"></i>
+                            <i className="fa-solid fa-paper-plane"></i>
                         </div>
                     </section>
                 </article>
+
                 <article className={styles['post-item']}>
                     <section className={styles['user-info']}>
                         <img
@@ -102,18 +119,18 @@ export default function Catalog() {
                     </section>
                     <section className={styles['likes']}>
                         <div className={styles['likes-count']}>
-                            <i class="fa-solid fa-thumbs-up"></i>
+                            <i className="fa-solid fa-thumbs-up"></i>
                             <p>0</p>
                         </div>
                         <p className={styles['comments-count']}>0 comments</p>
                     </section>
                     <section className={styles['buttons']}>
                         <div className={styles['like-button']}>
-                            <i class="fa-solid fa-thumbs-up"></i>
+                            <i className="fa-solid fa-thumbs-up"></i>
                             <p>Like</p>
                         </div>
                         <div className={styles['comment-button']}>
-                            <i class="fa-solid fa-comment"></i>
+                            <i className="fa-solid fa-comment"></i>
                             <p className={styles['comment-button']}>Comment</p>
                         </div>
                     </section>
@@ -161,10 +178,11 @@ export default function Catalog() {
                                 type="text"
                                 placeholder="Write a comment..."
                             />
-                            <i class="fa-solid fa-paper-plane"></i>
+                            <i className="fa-solid fa-paper-plane"></i>
                         </div>
                     </section>
                 </article>
+
                 <article className={styles['post-item']}>
                     <section className={styles['user-info']}>
                         <img
@@ -189,18 +207,18 @@ export default function Catalog() {
                     </section>
                     <section className={styles['likes']}>
                         <div className={styles['likes-count']}>
-                            <i class="fa-solid fa-thumbs-up"></i>
+                            <i className="fa-solid fa-thumbs-up"></i>
                             <p>0</p>
                         </div>
                         <p className={styles['comments-count']}>0 comments</p>
                     </section>
                     <section className={styles['buttons']}>
                         <div className={styles['like-button']}>
-                            <i class="fa-solid fa-thumbs-up"></i>
+                            <i className="fa-solid fa-thumbs-up"></i>
                             <p>Like</p>
                         </div>
                         <div className={styles['comment-button']}>
-                            <i class="fa-solid fa-comment"></i>
+                            <i className="fa-solid fa-comment"></i>
                             <p className={styles['comment-button']}>Comment</p>
                         </div>
                     </section>
@@ -247,10 +265,11 @@ export default function Catalog() {
                                 type="text"
                                 placeholder="Write a comment..."
                             />
-                            <i class="fa-solid fa-paper-plane"></i>
+                            <i className="fa-solid fa-paper-plane"></i>
                         </div>
                     </section>
                 </article>
+
                 <article className={styles['post-item']}>
                     <section className={styles['user-info']}>
                         <img
@@ -278,18 +297,18 @@ export default function Catalog() {
                     </section>
                     <section className={styles['likes']}>
                         <div className={styles['likes-count']}>
-                            <i class="fa-solid fa-thumbs-up"></i>
+                            <i className="fa-solid fa-thumbs-up"></i>
                             <p>0</p>
                         </div>
                         <p className={styles['comments-count']}>0 comments</p>
                     </section>
                     <section className={styles['buttons']}>
                         <div className={styles['like-button']}>
-                            <i class="fa-solid fa-thumbs-up"></i>
+                            <i className="fa-solid fa-thumbs-up"></i>
                             <p>Like</p>
                         </div>
                         <div className={styles['comment-button']}>
-                            <i class="fa-solid fa-comment"></i>
+                            <i className="fa-solid fa-comment"></i>
                             <p className={styles['comment-button']}>Comment</p>
                         </div>
                     </section>
@@ -336,7 +355,7 @@ export default function Catalog() {
                                 type="text"
                                 placeholder="Write a comment..."
                             />
-                            <i class="fa-solid fa-paper-plane"></i>
+                            <i className="fa-solid fa-paper-plane"></i>
                         </div>
                     </section>
                 </article>
