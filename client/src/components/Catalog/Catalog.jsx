@@ -8,7 +8,7 @@ export default function Catalog() {
 
     const focusInput = () => {
         if (inputRef.current && mediaSectionRef.current) {
-            mediaSectionRef.current.scrollIntoView({behavior: 'smooth'})
+            mediaSectionRef.current.scrollIntoView({ behavior: 'smooth' });
             inputRef.current.focus();
         }
     };
@@ -34,7 +34,11 @@ export default function Catalog() {
                     <section className={styles['content-description']}>
                         <p>This is a landmark in Bulgaria</p>
                     </section>
-                    <section ref={mediaSectionRef} id="media" className={styles['media']}>
+                    <section
+                        ref={mediaSectionRef}
+                        id="media"
+                        className={styles['media']}
+                    >
                         <img src="/images/R.jpg" alt="" />
                     </section>
                     <section className={styles['likes']}>
@@ -49,12 +53,10 @@ export default function Catalog() {
                             <i className="fa-solid fa-thumbs-up"></i>
                             <p>Like</p>
                         </div>
-                        <div
-                            className={styles['comment-button-wrapper']}
-                        >
+                        <div className={styles['comment-button-wrapper']}>
                             <i className="fa-solid fa-comment"></i>
                             <p
-                            onClick={focusInput}
+                                onClick={focusInput}
                                 // href="#media"
                                 className={styles['comment-button']}
                             >
