@@ -10,6 +10,20 @@
 
 .user-info {
     display: flex;
+    justify-content: space-between;
+}
+
+.user-info .edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 1em 0.5em 1em;
+    cursor: pointer;
+    color: #585858;
+}
+
+.user-info-wrapper {
+    display: flex;
     gap: 1em;
     padding: 0.5em 1em 0.5em 1em;
     align-items: center;
