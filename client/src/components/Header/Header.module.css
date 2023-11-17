@@ -78,7 +78,8 @@
     border-radius: 50%;
 }
 
-.main-nav img:hover {
+.main-nav img:hover,
+.menu:hover {
     filter: brightness(90%);
 }
 
@@ -87,6 +88,16 @@
     position: absolute;
     border-radius: 0.5em;
     box-shadow: 0 0 0.1em 0.1em #ddd;
+}
+
+.inner-nav-li a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.3em 0.5em;
+    text-align: left;
+    border-radius: 0.5em;
+    gap: 0.4em;
 }
 
 .main-ul-li:hover {
@@ -107,7 +118,7 @@
     list-style: none;
 }
 
-.inner-nav-li div:hover,
+.inner-nav-li a:hover,
 .user-info a:hover,
 .logout:hover {
     background-color: #eee;
