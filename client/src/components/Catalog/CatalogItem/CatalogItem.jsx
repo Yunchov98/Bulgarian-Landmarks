@@ -5,7 +5,8 @@ import styles from './CatalogItem.module.css';
 export default function CatalogItem({
     username,
     file,
-    createdAt
+    createdAt,
+    description,
 }) {
     const inputRef = useRef(null);
     const mediaSectionRef = useRef(null);
@@ -20,18 +21,25 @@ export default function CatalogItem({
     return (
         <article className={styles['post-item']}>
             <section className={styles['user-info']}>
-                <img
-                    className={styles['user-img']}
-                    src="https://th.bing.com/th/id/R.6b0022312d41080436c52da571d5c697?rik=ejx13G9ZroRrcg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-young-user-icon-2400.png&ehk=NNF6zZUBr0n5i%2fx0Bh3AMRDRDrzslPXB0ANabkkPyv0%3d&risl=&pid=ImgRaw&r=0"
-                    alt="User profile pic"
-                />
-                <div className={styles['post-info']}>
-                    <p className={styles['username']}>{username}</p>
-                    <p className={styles['posted-on']}>Posted on {createdAt}</p>
+                <div className={styles['user-info-wrapper']}>
+                    <img
+                        className={styles['user-img']}
+                        src="https://th.bing.com/th/id/R.6b0022312d41080436c52da571d5c697?rik=ejx13G9ZroRrcg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-young-user-icon-2400.png&ehk=NNF6zZUBr0n5i%2fx0Bh3AMRDRDrzslPXB0ANabkkPyv0%3d&risl=&pid=ImgRaw&r=0"
+                        alt="User profile pic"
+                    />
+                    <div className={styles['post-info']}>
+                        <p className={styles['username']}>{username}</p>
+                        <p className={styles['posted-on']}>
+                            Posted on {createdAt}
+                        </p>
+                    </div>
+                </div>
+                <div className={styles['edit']}>
+                    <i class="fa-solid fa-pen-to-square"></i>
                 </div>
             </section>
             <section className={styles['content-description']}>
-                <p>This is a landmark in Bulgaria</p>
+                <p>{description}</p>
             </section>
             <section ref={mediaSectionRef} className={styles['media']}>
                 <img src={file} alt="" />
