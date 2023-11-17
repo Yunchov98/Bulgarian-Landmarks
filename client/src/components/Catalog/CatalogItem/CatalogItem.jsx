@@ -2,7 +2,11 @@ import { useRef } from 'react';
 
 import styles from './CatalogItem.module.css';
 
-export default function CatalogItem() {
+export default function CatalogItem({
+    username,
+    file,
+    createdAt
+}) {
     const inputRef = useRef(null);
     const mediaSectionRef = useRef(null);
 
@@ -22,15 +26,15 @@ export default function CatalogItem() {
                     alt="User profile pic"
                 />
                 <div className={styles['post-info']}>
-                    <p className={styles['username']}>Qsen</p>
-                    <p className={styles['posted-on']}>Posted on 15.11</p>
+                    <p className={styles['username']}>{username}</p>
+                    <p className={styles['posted-on']}>Posted on {createdAt}</p>
                 </div>
             </section>
             <section className={styles['content-description']}>
                 <p>This is a landmark in Bulgaria</p>
             </section>
             <section ref={mediaSectionRef} className={styles['media']}>
-                <img src="/images/R.jpg" alt="" />
+                <img src={file} alt="" />
             </section>
             <section className={styles['likes']}>
                 <div className={styles['likes-count']}>
