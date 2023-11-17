@@ -36,22 +36,25 @@ export default function Header() {
                         </div>
                         <ul className={styles['inner-nav']}>
                             <li className={styles['inner-nav-li']}>
-                                <div className={styles['catalog-wrapper']}>
-                                    <i className="fa-solid fa-landmark-dome"></i>
-                                    <Link to={'/catalog'}>Catalog</Link>
-                                </div>
+                                <Link
+                                    className={styles['catalog']}
+                                    to={'/catalog'}
+                                >
+                                    <i className="fa-solid fa-landmark-dome"></i>{' '}
+                                    Catalog
+                                </Link>
                             </li>
                             <li className={styles['inner-nav-li']}>
-                                <div>
-                                    <i className="fa-solid fa-address-card"></i>
-                                    <Link to={'#'}>About us</Link>
-                                </div>
+                                <Link to={'#'}>
+                                    <i className="fa-solid fa-address-card"></i>{' '}
+                                    About us
+                                </Link>
                             </li>
                             <li className={styles['inner-nav-li']}>
-                                <div className={styles['create-wrapper']}>
-                                    <i className="fa-solid fa-pen"></i>
-                                    <Link to={'#'}>Create Post</Link>
-                                </div>
+                                <Link to={'/create-post'}>
+                                    <i className="fa-solid fa-pen"></i> Create
+                                    Post
+                                </Link>
                             </li>
                         </ul>
                     </li>
