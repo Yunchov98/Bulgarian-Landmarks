@@ -11,7 +11,6 @@ export default function Catalog() {
     useEffect(() => {
         postService.getAllPosts().then((result) => {
             setPosts(result.reverse());
-            console.log(result);
         });
     }, []);
     return (
