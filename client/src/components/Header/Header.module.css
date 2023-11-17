@@ -178,3 +178,38 @@
         transform: translateY(0);
     }
 }
+
+@media (width < 850px) {
+    .search-bar {
+        width: 18em;
+    }
+}
+
+@media (width < 800px) {
+    .search-bar {
+        width: 15em;
+    }
+}
+
+@media (width < 640px) {
+    .search-bar {
+        width: 8em;
+    }
+
+    .search-bar,
+    .search-button {
+        padding: 0.1em 0.2em;
+    }
+}
+
+@media (width < 420px) {
+    .search-bar {
+        width: 6em;
+    }
+}
+
+@media (width < 300px) {
+    .search-form {
+        display: none;
+    }
+}
