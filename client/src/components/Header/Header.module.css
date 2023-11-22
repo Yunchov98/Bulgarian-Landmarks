@@ -4,14 +4,17 @@
     justify-content: space-between;
     background-color: #369;
     align-items: center;
-    padding: 0.5em 1em;
+    padding: 0.5em 1.5em;
     width: 100%;
     z-index: 100000;
 }
 
 .site-name {
-    color: #fff;
     transition: transform 0.7s ease-in-out;
+}
+
+.site-name a {
+    color: #fff;
     text-decoration: none;
 }
 
@@ -21,26 +24,44 @@
 }
 
 .search-button {
-    opacity: 70%;
+    background-color: #ddd;
     cursor: pointer;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    text-align: center;
 }
 
 .search-bar,
 .search-button {
-    padding: 0.5em 1em;
+    padding: 0.7em 1.4em;
     border: 0;
-    border-radius: 0.4em;
+    outline: 1px solid #aaa;
 }
 
 .search-bar {
-    background-color: #fff;
-    opacity: 50%;
-    margin-right: 0.5em;
+    background-color: #eee;
     width: 25em;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
 }
 
 .main-nav {
     position: relative;
+}
+
+.guest {
+    display: flex;
+    gap: 1em;
+    list-style: none;
+}
+
+.guest a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.guest a:hover {
+    text-decoration: underline;
 }
 
 .main-nav > ul {
@@ -50,7 +71,13 @@
     justify-content: center;
 }
 
-.main-nav > ul > li {
+.user {
+    display: flex;
+    padding-right: 4.8em;
+    gap: 0.8em;
+}
+
+.main-nav .user {
     list-style: none;
     height: 2em;
     width: 2em;
