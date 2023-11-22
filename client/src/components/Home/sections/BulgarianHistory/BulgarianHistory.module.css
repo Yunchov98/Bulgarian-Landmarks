@@ -50,6 +50,7 @@
     float: left;
     margin-right: 1em;
     padding-top: 0.5em;
+    overflow: hidden;
 }
 
 .article-description {
