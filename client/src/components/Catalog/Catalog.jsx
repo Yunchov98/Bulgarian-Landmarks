@@ -9,9 +9,14 @@ export default function Catalog() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        postService.getAllPosts().then((result) => {
-            setPosts(result.reverse());
-        });
+        postService
+            .getAllPosts()
+            .then((result) => {
+                setPosts(result.reverse());
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }, []);
     return (
         <section className={styles['catalog-section']}>
@@ -20,6 +25,9 @@ export default function Catalog() {
                 {posts.map((post) => (
                     <CatalogItem key={post._id} {...post} />
                 ))}
+                {posts.length === 0 && (
+                    <h2 className={styles['no-posts']}>No posts yet!</h2>
+                )}
             </div>
         </section>
     );
