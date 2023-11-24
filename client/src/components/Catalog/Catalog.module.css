@@ -23,3 +23,8 @@
     align-items: center;
     gap: 1em;
 }
+
+.no-posts {
+    padding: 2em 0 2em 0;
+    align-items: center;
+}
