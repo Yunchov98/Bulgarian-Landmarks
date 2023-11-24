@@ -8,6 +8,7 @@ import Catalog from './components/Catalog/Catalog';
 import Footer from './components/Footer/Footer';
 import ToTheTopButton from './components/ToTheTopButton/ToTheTopButton';
 import CreatePost from './components/CreatePost/CreatePost';
+import Login from './components/Login/Login';
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/catalog" element={<Catalog />} />
                     <Route path="/create-post" element={<CreatePost />} />
+                    <Route path="/login" element={<Login />} />
                 </Routes>
 
                 <ToTheTopButton />
