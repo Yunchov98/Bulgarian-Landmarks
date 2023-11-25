@@ -10,12 +10,12 @@
 }
 
 .hero article {
-    color: #FFF;
+    color: #fff;
     text-align: center;
     animation: 4s alternate slide-down;
 }
 
-.img-wrapper  {
+.img-wrapper {
     display: flex;
 }
 
@@ -48,6 +48,6 @@
 
 .img-wrapper li p {
     position: absolute;
-    color: #FFF;
+    color: #fff;
     font-weight: bold;
 }
