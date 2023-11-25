@@ -1,4 +1,4 @@
-import styles from './BulgarianHistory.module.css'
+import styles from './BulgarianHistory.module.css';
 
 export default function BulgarianHistory() {
     return (
