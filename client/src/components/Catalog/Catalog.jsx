@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 
+import styles from './Catalog.module.css';
 import CatalogItem from './CatalogItem/CatalogItem';
 import * as postService from '../../core/services/postService';
-
-import styles from './Catalog.module.css';
 
 export default function Catalog() {
     const [posts, setPosts] = useState([]);
