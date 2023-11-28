@@ -16,7 +16,7 @@
 }
 
 .heading {
-    padding-bottom: 2em;
+    padding-bottom: 0.5em;
     text-align: center;
 }
 
@@ -27,18 +27,42 @@
 .greeting {
     font-size: 0.9em;
     color: #7a7a7a;
+    margin-bottom: 1em;
+}
+
+.error-message-wrapper {
+    background-color: #ddd;
+    padding: 1em 2em 1em 2em;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+    animation: 1s alternate show-up;
+}
+
+@keyframes show-up {
+    from {
+        transform: translateX(-3vw);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
+    margin-top: 1.5em;
 }
 
 .email-wrapper,
 .password-wrapper {
     margin-bottom: 2em;
+}
+
+.input-wrapper {
     display: flex;
     border-bottom: 1px solid #aaa;
+    text-align: center;
 }
 
 .form-input {
@@ -59,6 +83,11 @@
     color: #7c7c7c;
     width: 1.5em;
     height: 1.2em;
+}
+
+.error-message {
+    font-size: 0.7em;
+    color: #c50000;
 }
 
 .login-button {
