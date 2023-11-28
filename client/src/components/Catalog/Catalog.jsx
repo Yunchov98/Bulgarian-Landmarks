@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import CatalogItem from './CatalogItem/CatalogItem';
-import * as postService from '../../services/postService';
+import * as postService from '../../core/services/postService';
 
 import styles from './Catalog.module.css';
 
