@@ -29,3 +29,5 @@ export const RegisterFormKeys = {
     Password: 'password',
     ConfirmPassword: 'confirmPassword',
 };
+
+export const tokenName = 'accessToken'
