@@ -1,14 +1,19 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import toTheTop from '../../utils/toTheTop';
-
+import { PATH } from '../../core/environments/constants';
 import styles from './Header.module.css';
+import toTheTop from '../../utils/toTheTop';
+import AuthContext from '../../contexts/authContext';
 
 export default function Header() {
+    const { isAuthenticated, username, logoutHandler, avatar } =
+        useContext(AuthContext);
+
     return (
         <header className={styles['site-header']}>
             <h2 className={styles['site-name']}>
-                <Link onClick={() => toTheTop('instant')} to={'/'}>
+                <Link onClick={() => toTheTop('instant')} to={PATH.home}>
                     Bulgarian Landmarks
                 </Link>
             </h2>
@@ -26,66 +31,72 @@ export default function Header() {
             </form>
             <nav className={styles['main-nav']}>
                 <ul className={styles['main-ul']}>
-                    {/* <div className={styles['user']}>
-                        <li className={styles['main-ul-li']}>
-                            <div className={styles['menu']}>
-                                <i className="fa-solid fa-arrows-to-circle"></i>
-                            </div>
-                            <ul className={styles['inner-nav']}>
-                                <li className={styles['inner-nav-li']}>
-                                    <Link
-                                        className={styles['catalog']}
-                                        to={'/catalog'}
-                                    >
-                                        <i className="fa-solid fa-landmark-dome"></i>{' '}
-                                        Catalog
-                                    </Link>
-                                </li>
-                                <li className={styles['inner-nav-li']}>
-                                    <Link to={'#'}>
-                                        <i className="fa-solid fa-address-card"></i>{' '}
-                                        About us
-                                    </Link>
-                                </li>
-                                <li className={styles['inner-nav-li']}>
-                                    <Link to={'/create-post'}>
-                                        <i className="fa-solid fa-pen"></i>{' '}
-                                        Create Post
-                                    </Link>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className={styles['main-ul-li']}>
-                            <img
-                                src="https://th.bing.com/th/id/R.6b0022312d41080436c52da571d5c697?rik=ejx13G9ZroRrcg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-young-user-icon-2400.png&ehk=NNF6zZUBr0n5i%2fx0Bh3AMRDRDrzslPXB0ANabkkPyv0%3d&risl=&pid=ImgRaw&r=0"
-                                alt=""
-                            />
-                            <ul className={styles['inner-nav']}>
-                                <li className={styles['user-info']}>
-                                    <Link to={'/catalog'}>
-                                        <img
-                                            src="https://th.bing.com/th/id/R.6b0022312d41080436c52da571d5c697?rik=ejx13G9ZroRrcg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-young-user-icon-2400.png&ehk=NNF6zZUBr0n5i%2fx0Bh3AMRDRDrzslPXB0ANabkkPyv0%3d&risl=&pid=ImgRaw&r=0"
-                                            alt=""
-                                        />
-                                        <p>User Name</p>
-                                    </Link>
-                                    <div className={styles['logout']}>
-                                        <i className="fa-solid fa-right-from-bracket"></i>
-                                        <p>Logout</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </div> */}
-
-                    <div className={styles['guest']}>
-                        <li>
-                            <Link to={'/login'}>Log In</Link>
-                        </li>
-                        <li>
-                            <Link to={'/register'}>Register</Link>
-                        </li>
-                    </div>
+                    {isAuthenticated ? (
+                        <div className={styles['user']}>
+                            <li className={styles['main-ul-li']}>
+                                <div className={styles['menu']}>
+                                    <i className="fa-solid fa-arrows-to-circle"></i>
+                                </div>
+                                <ul className={styles['inner-nav']}>
+                                    <li className={styles['inner-nav-li']}>
+                                        <Link
+                                            className={styles['catalog']}
+                                            to={PATH.catalog}
+                                        >
+                                            <i className="fa-solid fa-landmark-dome"></i>{' '}
+                                            Catalog
+                                        </Link>
+                                    </li>
+                                    <li className={styles['inner-nav-li']}>
+                                        <Link to={'#'}>
+                                            <i className="fa-solid fa-address-card"></i>{' '}
+                                            About us
+                                        </Link>
+                                    </li>
+                                    <li className={styles['inner-nav-li']}>
+                                        <Link to={PATH.createPost}>
+                                            <i className="fa-solid fa-pen"></i>{' '}
+                                            Create Post
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li className={styles['main-ul-li']}>
+                                <img src={avatar} alt="profile-picture" />
+                                <ul className={styles['inner-nav']}>
+                                    <li className={styles['user-info']}>
+                                        <Link to={'#'}>
+                                            <img
+                                                src={avatar}
+                                                alt="profile-picture"
+                                            />
+                                            <p>{username ? username : ''}</p>
+                                        </Link>
+                                        <div
+                                            onClick={logoutHandler}
+                                            className={styles['logout']}
+                                        >
+                                            <i className="fa-solid fa-right-from-bracket"></i>
+                                            <p>
+                                                <Link to={PATH.logout}>
+                                                    Logout
+                                                </Link>
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    ) : (
+                        <div className={styles['guest']}>
+                            <li>
+                                <Link to={PATH.login}>Log In</Link>
+                            </li>
+                            <li>
+                                <Link to={PATH.register}>Register</Link>
+                            </li>
+                        </div>
+                    )}
                 </ul>
             </nav>
         </header>
