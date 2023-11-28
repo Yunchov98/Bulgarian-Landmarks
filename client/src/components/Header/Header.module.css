@@ -197,6 +197,10 @@
     border-radius: 0.5em;
 }
 
+.logout p a {
+    margin: 0;
+}
+
 @keyframes show-up {
     from {
         transform: translateX(100vw);
