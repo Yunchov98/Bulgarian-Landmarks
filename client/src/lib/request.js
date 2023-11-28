@@ -1,3 +1,5 @@
+import { baseUrl, tokenName } from '../core/environments/constants';
+
 const buildOptions = (data) => {
     const options = {};
 
@@ -8,7 +10,7 @@ const buildOptions = (data) => {
         };
     }
 
-    const token = localStorage.getItem('accessToken');
+    const token = localStorage.getItem(tokenName);
 
     if (token) {
         options.headers = {
@@ -21,7 +23,7 @@ const buildOptions = (data) => {
 };
 
 const request = async (method, url, data) => {
-    const response = await fetch(url, {
+    const response = await fetch(baseUrl + url, {
         ...buildOptions(data),
         method,
     });
@@ -33,6 +35,9 @@ const request = async (method, url, data) => {
     const result = await response.json();
 
     if (!response.ok) {
+        if (response.status === 403) {
+            localStorage.removeItem(tokenName);
+        }
         throw result;
     }
 
