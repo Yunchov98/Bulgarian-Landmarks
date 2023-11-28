@@ -1,0 +1,157 @@
+label {
+    display: none;
+}
+
+.register-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    margin: 1em auto;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 3em 2em 1em 2em;
+    border-radius: 1em;
+    box-shadow: 0 0 0.4em 0.1em #aaa;
+}
+
+.section-header {
+    padding-bottom: 0.5em;
+    text-align: center;
+}
+
+.section-heading {
+    padding-bottom: 0.3em;
+}
+
+.greeting {
+    font-size: 0.9em;
+    color: #7a7a7a;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5em;
+}
+
+.email-wrapper,
+.username-wrapper,
+.avatar-wrapper,
+.age-wrapper,
+.gender-wrapper,
+.password-wrapper,
+.confirm-password-wrapper {
+    margin-bottom: 2em;
+}
+
+.gender-wrapper select {
+    width: 100%;
+}
+
+.error-message {
+    margin-bottom: 0.5em;
+    text-align: center;
+    font-size: 0.8em;
+    color: #c50000;
+}
+
+.avatar-content-wrapper,
+.avatar-content-wrapper label,
+input[type='file'] {
+    cursor: pointer;
+}
+
+.avatar-content-wrapper {
+    display: flex;
+    gap: 2em;
+    padding-left: 0.2em;
+}
+
+.avatar-content-wrapper label {
+    display: block;
+    background-color: #369;
+    padding: 0.2em 0.5em;
+    border-radius: 0.3em;
+    color: #fff;
+}
+
+.avatar-content-wrapper label:hover {
+    filter: brightness(96%);
+}
+
+input[type='date'] {
+    width: 100%;
+    padding: 0 0.2em 0 0.2em;
+}
+
+.input-wrapper,
+.input-wrapper-error {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.input-wrapper {
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 0.1em;
+}
+
+.input-wrapper-error {
+    border-bottom: 1px solid red;
+}
+
+.form-input {
+    padding: 0.2em 2em 0.2em 0.2em;
+    font-size: 0.9em;
+    border: 0;
+}
+
+.form-input:focus,
+select:focus {
+    outline: none;
+}
+
+.show-hide-password-button {
+    cursor: pointer;
+}
+
+.register-form i {
+    color: #7c7c7c;
+    width: 1.5em;
+    height: 1.2em;
+}
+
+.register-button,
+.register-button-disable {
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 2em;
+    border: 1px solid #aaa;
+    cursor: pointer;
+    margin-bottom: 2em;
+    transition: all 0.3s ease-in-out;
+    font-size: 0.8em;
+}
+
+.register-button:hover {
+    background-color: #369;
+    color: white;
+}
+
+.register-button-disable:hover {
+    cursor: not-allowed;
+}
+
+.sign-in {
+    font-size: 0.8em;
+}
+
+.sign-in a {
+    text-decoration: none;
+    color: #369;
+}
