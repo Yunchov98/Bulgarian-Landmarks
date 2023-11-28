@@ -2,9 +2,9 @@ export const baseUrl = 'http://localhost:3030/';
 
 export const PATH = {
     home: '/',
-    login: '/login',
-    register: '/register',
-    logout: '/logout',
+    login: '/users/login',
+    register: '/users/register',
+    logout: '/users/logout',
     createPost: '/create-post',
     catalog: '/catalog',
 };
@@ -23,7 +23,8 @@ export const LoginFormKeys = {
 export const RegisterFormKeys = {
     Email: 'email',
     Username: 'username',
-    Age: 'age',
+    Avatar: 'avatar',
+    BornDate: 'bornDate',
     Gender: 'gender',
     Password: 'password',
     ConfirmPassword: 'confirmPassword',
