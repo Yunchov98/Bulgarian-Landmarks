@@ -62,12 +62,12 @@ export default function Header() {
                                 </ul>
                             </li>
                             <li className={styles['main-ul-li']}>
-                                <img src={avatar} alt="profile-picture" />
+                                <img src={avatar || '/images/default-profile-pic.png'} alt="profile-picture" />
                                 <ul className={styles['inner-nav']}>
                                     <li className={styles['user-info']}>
                                         <Link to={'#'}>
                                             <img
-                                                src={avatar}
+                                                src={avatar || '/images/default-profile-pic.png'}
                                                 alt="profile-picture"
                                             />
                                             <p>{username ? username : ''}</p>
