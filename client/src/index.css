@@ -16,7 +16,7 @@ html {
 }
 
 body {
-    background: url('../public/images/mountain-river-forest-sky-landscapes.jpg')
+    background: url('/images/mountain-river-forest-sky-landscapes.jpg')
         no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
