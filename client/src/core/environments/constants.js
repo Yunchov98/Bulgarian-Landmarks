@@ -13,6 +13,7 @@ export const endpoints = {
     login: 'users/login',
     register: 'users/register',
     logout: 'users/logout',
+    createPost: 'data/posts',
 };
 
 export const LoginFormKeys = {
@@ -30,4 +31,12 @@ export const RegisterFormKeys = {
     ConfirmPassword: 'confirmPassword',
 };
 
-export const tokenName = 'accessToken'
+export const CreateFormKeys = {
+    LandmarkTitle: 'landmarkTitle',
+    Location: 'location',
+    PostDescription: 'postDescription',
+    LandmarkDescription: 'landmarkDescription',
+    PostImage: 'postImage',
+};
+
+export const tokenName = 'accessToken';
