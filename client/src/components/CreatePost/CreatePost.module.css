@@ -4,14 +4,13 @@
     align-items: center;
     justify-content: center;
     background-color: #eee;
+    padding: 2em 0;
 }
 
 .content-wrapper {
     padding: 2em 3em;
-    max-width: 60em;
     flex-direction: column;
     text-align: center;
-    height: 100%;
     border-radius: 0.5em;
     box-shadow: 0 0 0.5em 0.1em #aaa;
 }
@@ -24,12 +23,44 @@
     padding-bottom: 0.8em;
 }
 
+.landmark-title,
+.location {
+    width: 100%;
+    border: 0;
+    font-size: 0.8em;
+    padding: 0.6em 2em;
+    border-radius: 0.5em;
+    outline: 1px solid #ddd;
+}
+
+.landmark-title-error,
+.location-error {
+    width: 100%;
+    border: 0;
+    font-size: 0.8em;
+    padding: 0.6em 2em;
+    border-radius: 0.5em;
+    outline: 1px solid #cc0303;
+}
+
 .file-wrapper {
     background-color: #fff;
     padding: 1em 2em;
     display: flex;
     flex-direction: column;
-    border: 2px dotted #aaa;
+    border: 2px dotted #ccc;
+    border-radius: 1em;
+    transition: filter 0.2s ease-in;
+    margin-bottom: 0.5em;
+    align-items: center;
+}
+
+.file-wrapper-error {
+    background-color: #fff;
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: column;
+    border: 2px dotted #cc0303;
     border-radius: 1em;
     transition: filter 0.2s ease-in;
     margin-bottom: 0.5em;
@@ -45,10 +76,12 @@
     text-align: left;
     font-size: 0.8em;
     padding-left: 0.4em;
+    text-align: center;
+    margin-bottom: 0.5em;
 }
 
-input[type='file']::file-selector-button {
-    margin-right: 1.2em;
+.file-input::file-selector-button {
+    margin-right: 1.5em;
     border: none;
     background: #369;
     padding: 1em 1.2em;
@@ -57,8 +90,7 @@ input[type='file']::file-selector-button {
     cursor: pointer;
     transition: filter 0.2s ease-in-out;
 }
-
-input[type='file']::file-selector-button:hover {
+.file-input::file-selector-button:hover {
     filter: brightness(90%);
 }
 
@@ -70,13 +102,23 @@ input[type='file']::file-selector-button:hover {
     padding-bottom: 1em;
 }
 
-.form-item textarea {
+.description {
     padding: 1em 2em;
     border: 0;
     border-radius: 1em;
+    outline: 1px solid #ddd;
+    resize: none;
 }
 
-.form-item button {
+.description-error {
+    padding: 1em 2em;
+    border: 0;
+    border-radius: 1em;
+    outline: 1px solid #cc0303;
+    resize: none;
+}
+
+.input-button {
     width: 100%;
     padding: 0.6em 0;
     cursor: pointer;
@@ -87,6 +129,6 @@ input[type='file']::file-selector-button:hover {
     color: #fff;
 }
 
-.form-item button:hover {
+.input-button:hover {
     filter: brightness(90%);
 }
