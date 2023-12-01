@@ -41,6 +41,7 @@ export default function PostDetails({
                             </div>
                         </div>
                     </div>
+                            <p className={styles['delete-button']}><i className="fa-solid fa-trash-can"></i></p>
                 </section>
 
                 <section className={styles['content-description']}>
