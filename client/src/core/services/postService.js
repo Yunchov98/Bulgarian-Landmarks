@@ -16,3 +16,15 @@ export const getAllPosts = async () => {
 
     return result;
 };
+
+export const getPostById = async (postId) => {
+    const result = await request.get(endpoints.getPostById(postId));
+
+    return result;
+};
+
+export const editPost = async (postId, postData) => {
+    const result = await request.put(endpoints.editPost(postId), postData);
+
+    return result;
+};
