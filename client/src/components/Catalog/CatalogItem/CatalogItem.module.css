@@ -22,6 +22,10 @@
     gap: 1em;
 }
 
+.user-info .edit a {
+    color: #585858;
+}
+
 .view-more {
     margin: 1em 1em 0 1em;
     cursor: pointer;
