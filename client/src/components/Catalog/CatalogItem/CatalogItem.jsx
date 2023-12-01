@@ -1,9 +1,10 @@
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { useFormik } from 'formik';
 
 import styles from './CatalogItem.module.css';
 import AuthContext from '../../../contexts/authContext';
 import dateConverter from '../../../utils/dateConverter';
+import PostDetails from '../../PostDetails/PostDetails';
 
 const initialValues = {
     commentInput: '',
@@ -11,19 +12,20 @@ const initialValues = {
 
 export default function CatalogItem({
     landmarkDescription,
-    landmarkTitle,
-    location,
     postDescription,
+    landmarkTitle,
     postImage,
     _createdOn,
+    location,
     _ownerId,
     owner,
 }) {
-    const { values, handleChange, handleBlur, errors, handleSubmit } =
-        useFormik({
-            initialValues,
-            onSubmit,
-        });
+    const [showDetails, setShowDetails] = useState(false);
+
+    const { values, handleChange, handleSubmit } = useFormik({
+        initialValues,
+        onSubmit,
+    });
 
     const { avatar, username, userId } = useContext(AuthContext);
 
@@ -37,12 +39,31 @@ export default function CatalogItem({
         }
     };
 
+    const onViewMoreHandleClick = () => {
+        setShowDetails(true);
+        mediaSectionRef.current.scrollIntoView({
+            block: 'center',
+        });
+    };
+
+    // Submit fucntion for comment
     function onSubmit(values) {
         console.log(values);
     }
 
     return (
         <article className={styles['post-item']}>
+            {showDetails && (
+                <PostDetails
+                    owner={owner}
+                    _createdOn={_createdOn}
+                    location={location}
+                    landmarkTitle={landmarkTitle}
+                    landmarkDescription={landmarkDescription}
+                    postImage={postImage}
+                    onClose={() => setShowDetails(false)}
+                />
+            )}
             <section className={styles['user-info']}>
                 <div className={styles['user-info-wrapper']}>
                     <div className={styles['img-container']}>
@@ -60,20 +81,24 @@ export default function CatalogItem({
                         <p className={styles['posted-on']}>
                             Posted on {dateConverter(_createdOn)}
                         </p>
-                        <p className={styles['posted-on']}>{location}</p>
                     </div>
                 </div>
                 {userId === _ownerId ? (
                     <div className={styles['edit']}>
+                        <p onClick={onViewMoreHandleClick}>View more</p>
                         <i className="fa-solid fa-pen-to-square"></i>
                     </div>
                 ) : (
-                    <p className={styles['edit']}>View More</p>
+                    <p
+                        onClick={onViewMoreHandleClick}
+                        className={styles['view-more']}
+                    >
+                        View More
+                    </p>
                 )}
             </section>
             <section className={styles['content-description']}>
                 <p>{postDescription}</p>
-                <p>{landmarkDescription}</p>
             </section>
             <section ref={mediaSectionRef} className={styles['media']}>
                 <img src={postImage} alt={`${username}'s post image`} />
