@@ -18,8 +18,18 @@
     align-items: center;
     justify-content: center;
     padding: 0.5em 1em 0.5em 1em;
+    color: #585858;
+    gap: 1em;
+}
+
+.view-more {
+    margin: 1em 1em 0 1em;
     cursor: pointer;
     color: #585858;
+}
+
+.user-info .edit > * {
+    cursor: pointer;
 }
 
 .user-info-wrapper {
@@ -44,6 +54,17 @@
 .posted-on {
     font-size: 0.6em;
     color: rgb(99, 99, 99);
+}
+
+.location-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.1em;
+}
+
+.location-wrapper i {
+    font-size: 0.7em;
+    color: #636363;
 }
 
 .content-description,
