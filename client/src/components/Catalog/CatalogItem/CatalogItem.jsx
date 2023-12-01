@@ -5,6 +5,8 @@ import styles from './CatalogItem.module.css';
 import AuthContext from '../../../contexts/authContext';
 import dateConverter from '../../../utils/dateConverter';
 import PostDetails from '../../PostDetails/PostDetails';
+import { Link } from 'react-router-dom';
+import { PATH } from '../../../core/environments/constants';
 
 const initialValues = {
     commentInput: '',
@@ -19,6 +21,7 @@ export default function CatalogItem({
     location,
     _ownerId,
     owner,
+    _id,
 }) {
     const [showDetails, setShowDetails] = useState(false);
 
@@ -86,7 +89,7 @@ export default function CatalogItem({
                 {userId === _ownerId ? (
                     <div className={styles['edit']}>
                         <p onClick={onViewMoreHandleClick}>View more</p>
-                        <i className="fa-solid fa-pen-to-square"></i>
+                        <Link to={PATH.editPost(_id)}><i className="fa-solid fa-pen-to-square"></i></Link>
                     </div>
                 ) : (
                     <p
