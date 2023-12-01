@@ -6,3 +6,13 @@ export const createPost = async (postData) => {
 
     return result;
 };
+
+export const getAllPosts = async () => {
+    const query = new URLSearchParams({
+        load: 'owner=_ownerId:users',
+    });
+
+    const result = await request.get(`${endpoints.getPosts}?${query}`);
+
+    return result;
+};
