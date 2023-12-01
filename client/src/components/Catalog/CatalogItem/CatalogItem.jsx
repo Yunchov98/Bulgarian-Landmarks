@@ -1,13 +1,32 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
+import { useFormik } from 'formik';
 
 import styles from './CatalogItem.module.css';
+import AuthContext from '../../../contexts/authContext';
+import dateConverter from '../../../utils/dateConverter';
+
+const initialValues = {
+    commentInput: '',
+};
 
 export default function CatalogItem({
-    username,
-    file,
-    createdAt,
-    description,
+    landmarkDescription,
+    landmarkTitle,
+    location,
+    postDescription,
+    postImage,
+    _createdOn,
+    _ownerId,
+    owner,
 }) {
+    const { values, handleChange, handleBlur, errors, handleSubmit } =
+        useFormik({
+            initialValues,
+            onSubmit,
+        });
+
+    const { avatar, username, userId } = useContext(AuthContext);
+
     const inputRef = useRef(null);
     const mediaSectionRef = useRef(null);
 
@@ -18,31 +37,46 @@ export default function CatalogItem({
         }
     };
 
+    function onSubmit(values) {
+        console.log(values);
+    }
+
     return (
         <article className={styles['post-item']}>
             <section className={styles['user-info']}>
                 <div className={styles['user-info-wrapper']}>
-                    <img
-                        className={styles['user-img']}
-                        src="https://th.bing.com/th/id/R.6b0022312d41080436c52da571d5c697?rik=ejx13G9ZroRrcg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-young-user-icon-2400.png&ehk=NNF6zZUBr0n5i%2fx0Bh3AMRDRDrzslPXB0ANabkkPyv0%3d&risl=&pid=ImgRaw&r=0"
-                        alt="User profile pic"
-                    />
+                    <div className={styles['img-container']}>
+                        <img
+                            className={styles['user-img']}
+                            src={
+                                owner.avatar ||
+                                '/images/default-profile-pic.png'
+                            }
+                            alt="User profile pic"
+                        />
+                    </div>
                     <div className={styles['post-info']}>
-                        <p className={styles['username']}>{username}</p>
+                        <p className={styles['username']}>{owner.username}</p>
                         <p className={styles['posted-on']}>
-                            Posted on {createdAt}
+                            Posted on {dateConverter(_createdOn)}
                         </p>
+                        <p className={styles['posted-on']}>{location}</p>
                     </div>
                 </div>
-                <div className={styles['edit']}>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                </div>
+                {userId === _ownerId ? (
+                    <div className={styles['edit']}>
+                        <i className="fa-solid fa-pen-to-square"></i>
+                    </div>
+                ) : (
+                    <p className={styles['edit']}>View More</p>
+                )}
             </section>
             <section className={styles['content-description']}>
-                <p>{description}</p>
+                <p>{postDescription}</p>
+                <p>{landmarkDescription}</p>
             </section>
             <section ref={mediaSectionRef} className={styles['media']}>
-                <img src={file} alt="" />
+                <img src={postImage} alt={`${username}'s post image`} />
             </section>
             <section className={styles['likes']}>
                 <div className={styles['likes-count']}>
@@ -79,18 +113,33 @@ export default function CatalogItem({
             </section>
             <section className={styles['add-comment']}>
                 <img
-                    className={styles['comment-user-img']}
-                    src="https://th.bing.com/th/id/R.6b0022312d41080436c52da571d5c697?rik=ejx13G9ZroRrcg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-young-user-icon-2400.png&ehk=NNF6zZUBr0n5i%2fx0Bh3AMRDRDrzslPXB0ANabkkPyv0%3d&risl=&pid=ImgRaw&r=0"
+                    className={styles['user-img-comments']}
+                    src={avatar || '/images/default-profile-pic.png'}
                     alt="user"
                 />
                 <div className={styles['comment-area']}>
-                    <input
-                        ref={inputRef}
-                        className={styles['comment-input']}
-                        type="text"
-                        placeholder="Write a comment..."
-                    />
-                    <i className="fa-solid fa-paper-plane"></i>
+                    <form
+                        className={styles['comment-form']}
+                        onSubmit={handleSubmit}
+                    >
+                        <label htmlFor="commentInput"></label>
+                        <input
+                            ref={inputRef}
+                            className={styles['comment-input']}
+                            type="text"
+                            placeholder="Write a comment..."
+                            name="commentInput"
+                            id="commentInput"
+                            onChange={handleChange}
+                            value={values.commentInput}
+                        />
+                        <button
+                            className={styles['submit-form-button']}
+                            type="submit"
+                        >
+                            <i className="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
                 </div>
             </section>
         </article>
