@@ -17,6 +17,7 @@ export default function Catalog() {
                 console.log(err);
             });
     }, []);
+
     return (
         <section className={styles['catalog-section']}>
             <h2 className={styles['catalog-heading']}>Landmarks</h2>
