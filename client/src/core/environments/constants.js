@@ -14,6 +14,7 @@ export const endpoints = {
     register: 'users/register',
     logout: 'users/logout',
     createPost: 'data/posts',
+    getPosts: 'data/posts'
 };
 
 export const LoginFormKeys = {
