@@ -15,6 +15,7 @@ import ToTheTopButton from './components/ToTheTopButton/ToTheTopButton';
 import AuthGuard from './guards/AuthGuard';
 import LoggedInGuard from './guards/LoggedInGuard';
 import Logout from './components/Logout/Logout';
+import EditPost from './components/EditPost/EditPost';
 
 function App() {
     return (
@@ -31,6 +32,10 @@ function App() {
                             <Route
                                 path={PATH.createPost}
                                 element={<CreatePost />}
+                            />
+                            <Route
+                                path={PATH.edit}
+                                element={<EditPost />}
                             />
                             <Route path={PATH.logout} element={<Logout />} />
                         </Route>
