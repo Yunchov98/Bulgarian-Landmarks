@@ -68,7 +68,6 @@ export default function CreatePost() {
                                     {errors[CreateFormKeys.LandmarkTitle]}
                                 </p>
                             )}
-
                         <label htmlFor={CreateFormKeys.LandmarkTitle}></label>
                         <input
                             className={
@@ -198,13 +197,10 @@ export default function CreatePost() {
                     </div>
 
                     <div className={styles['form-item']}>
-                        {/* <label htmlFor="inputButton"></label> */}
                         <input
                             className={styles['input-button']}
                             type="submit"
                             disabled={isSubmitting}
-                            // name="inputButton"
-                            // id="inputButton"
                             value="Create Post"
                         />
                     </div>
