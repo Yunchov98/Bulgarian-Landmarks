@@ -1,0 +1,80 @@
+.backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.post-details {
+    background-color: #fff;
+    width: 30em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.1em 0.1em #ddd;
+    z-index: 50;
+    position: absolute;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-info .edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 1em 0.5em 1em;
+    cursor: pointer;
+    color: #585858;
+}
+
+.user-info-wrapper {
+    display: flex;
+    gap: 1em;
+    padding: 0.5em 1em 0.5em 1em;
+    align-items: center;
+}
+
+.user-img {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+}
+
+.username {
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.posted-on {
+    font-size: 0.6em;
+    color: #636363;
+}
+
+.location-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.1em;
+}
+
+.location-wrapper i {
+    font-size: 0.7em;
+    color: #636363;
+}
+
+.content-description,
+.likes {
+    padding: 0 1em 0.5em 1em;
+    font-size: 0.9em;
+}
+
+.media {
+    width: auto;
+    height: 100%;
+}
