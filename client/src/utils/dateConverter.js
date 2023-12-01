@@ -1,10 +1,11 @@
-export default function dateConverter() {
-    let today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const yyyy = today.getFullYear();
+export default function dateConverter(date) {
+    const now = new Date(date);
 
-    today = `${dd}.${mm}.${yyyy}`;
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
 
-    return today;
+    const modifiedDate = `${day}.${month}.${year}`;
+
+    return modifiedDate;
 }
