@@ -8,7 +8,6 @@ import { createValidation } from './createValidation';
 import * as postService from '../../core/services/postService';
 import styles from './CreatePost.module.css';
 import AuthContext from '../../contexts/authContext';
-// import dateConverter from '../../utils/dateConverter';
 
 const initialValues = {
     [CreateFormKeys.LandmarkTitle]: '',
@@ -44,7 +43,7 @@ export default function CreatePost() {
 
             await postService.createPost(values);
 
-            navigate(PATH.home);
+            navigate(PATH.catalog);
         } catch (error) {
             if (error.code === 401) {
                 resetForm();
