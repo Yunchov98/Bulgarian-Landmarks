@@ -28,3 +28,7 @@ export const editPost = async (postId, postData) => {
 
     return result;
 };
+
+export const deletePost = async (postId) => {
+    return await request.remove(endpoints.deletePost(postId));
+};
