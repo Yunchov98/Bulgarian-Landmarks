@@ -10,7 +10,7 @@
 
 .post-details {
     background-color: #fff;
-    width: 30em;
+    max-width: 30em;
     display: flex;
     flex-direction: column;
     border-radius: 0.5em;
