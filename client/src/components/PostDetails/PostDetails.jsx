@@ -1,5 +1,8 @@
+import { useContext, useState } from 'react';
 import dateConverter from '../../utils/dateConverter';
 import styles from './PostDetails.module.css';
+import AuthContext from '../../contexts/authContext';
+import DeletePost from '../DeletePost/DeletePost';
 
 export default function PostDetails({
     owner,
@@ -9,9 +12,25 @@ export default function PostDetails({
     landmarkDescription,
     postImage,
     onClose,
+    postId,
 }) {
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const { userId } = useContext(AuthContext);
+
+    const onDeleteIconClickHandle = () => {
+        setShowDeleteModal(true);
+    };
+
     return (
         <>
+            {showDeleteModal ? (
+                <DeletePost
+                    postId={postId}
+                    onClose={() => setShowDeleteModal(false)}
+                />
+            ) : (
+                ''
+            )}
             <div onClick={onClose} className={styles['backdrop']}></div>
             <article className={styles['post-details']}>
                 <section className={styles['user-info']}>
@@ -41,7 +60,16 @@ export default function PostDetails({
                             </div>
                         </div>
                     </div>
-                            <p className={styles['delete-button']}><i className="fa-solid fa-trash-can"></i></p>
+                    {owner._id === userId ? (
+                        <p
+                            onClick={onDeleteIconClickHandle}
+                            className={styles['delete-button']}
+                        >
+                            <i className="fa-solid fa-trash-can"></i>
+                        </p>
+                    ) : (
+                        ''
+                    )}
                 </section>
 
                 <section className={styles['content-description']}>
