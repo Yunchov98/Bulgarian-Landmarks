@@ -64,6 +64,7 @@ export default function CatalogItem({
                     landmarkTitle={landmarkTitle}
                     landmarkDescription={landmarkDescription}
                     postImage={postImage}
+                    postId={_id}
                     onClose={() => setShowDetails(false)}
                 />
             )}
@@ -89,7 +90,9 @@ export default function CatalogItem({
                 {userId === _ownerId ? (
                     <div className={styles['edit']}>
                         <p onClick={onViewMoreHandleClick}>View more</p>
-                        <Link to={PATH.editPost(_id)}><i className="fa-solid fa-pen-to-square"></i></Link>
+                        <Link to={PATH.editPost(_id)}>
+                            <i className="fa-solid fa-pen-to-square"></i>
+                        </Link>
                     </div>
                 ) : (
                     <p
