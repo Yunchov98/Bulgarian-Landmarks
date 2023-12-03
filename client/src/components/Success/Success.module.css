@@ -1,0 +1,59 @@
+@keyframes slide-down {
+    from {
+        transform: translateY(-100vh);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.success-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    animation: normal 0.5s slide-down;
+}
+
+.wrapper {
+    background-color: #fff;
+    padding: 3em 3em 1em 3em;
+    position: relative;
+    border-radius: 0.2em;
+}
+
+.success-media {
+    position: absolute;
+    font-size: 5em;
+    top: 0.2em;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #449714;
+    animation: normal 1s show;
+}
+
+.section-heading,
+.heading-text {
+    text-align: center;
+}
+
+.section-heading {
+    font-size: 2em;
+    margin: 1em 0;
+}
+
+.heading-text {
+    margin-bottom: 2em;
+}
+
+.ok-button {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background-color: #449714;
+    padding: 0.4em 0;
+    border-radius: 0.3em;
+    color: #fff;
+}
