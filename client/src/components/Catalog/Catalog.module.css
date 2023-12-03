@@ -7,6 +7,7 @@
     background-color: #eee;
     padding: 2em 0;
     scroll-behavior: smooth;
+    min-height: 100vh;
 }
 
 .catalog-heading {
