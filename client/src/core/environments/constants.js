@@ -8,6 +8,7 @@ export const PATH = {
     catalog: '/posts',
     edit: 'posts/edit/:postId',
     createPost: '/create-post',
+    success: '/success',
     editPost: (postId) => `/posts/edit/${postId}`,
 };
 
@@ -19,6 +20,7 @@ export const endpoints = {
     getPosts: 'data/posts',
     getPostById: (postId) => `data/posts/${postId}`,
     editPost: (postId) => `data/posts/${postId}`,
+    deletePost: (postId) => `data/posts/${postId}`,
 };
 
 export const LoginFormKeys = {
@@ -50,6 +52,6 @@ export const EditFormKeys = {
     PostDescription: 'postDescription',
     LandmarkDescription: 'landmarkDescription',
     PostImage: 'postImage',
-}
+};
 
 export const tokenName = 'accessToken';
