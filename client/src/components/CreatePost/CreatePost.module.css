@@ -127,3 +127,9 @@
 .input-button:hover {
     filter: brightness(90%);
 }
+
+@media (width < 450px) {
+    .content-wrapper {
+        padding: 2em 0;
+    }
+}
