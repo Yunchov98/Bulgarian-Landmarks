@@ -98,6 +98,14 @@
     padding-right: 0.2em;
 }
 
+.comments-count {
+    cursor: pointer;
+}
+
+.comments-count:hover {
+    text-decoration: underline;
+}
+
 .buttons {
     display: flex;
     justify-content: space-evenly;
@@ -162,6 +170,7 @@
     height: 2em;
     width: 2em;
     border-radius: 50%;
+    aspect-ratio: 1/1;
 }
 
 .add-comment {
@@ -192,6 +201,18 @@
     font-size: 0.8em;
     cursor: no-drop;
     border: 0;
+}
+
+.all-comments {
+    text-align: center;
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #585858;
+    cursor: pointer;
+}
+
+.all-comments:hover {
+    text-decoration: underline;
 }
 
 .user-img-comments {
