@@ -1,15 +1,23 @@
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useReducer, useRef, useState } from 'react';
 import { useFormik } from 'formik';
 
+import PostDetails from '../../PostDetails/PostDetails';
+
+import { Link } from 'react-router-dom';
+import {
+    CommentForm,
+    PATH,
+    CommentActions,
+} from '../../../core/environments/constants';
 import styles from './CatalogItem.module.css';
 import AuthContext from '../../../contexts/authContext';
 import dateConverter from '../../../utils/dateConverter';
-import PostDetails from '../../PostDetails/PostDetails';
-import { Link } from 'react-router-dom';
-import { PATH } from '../../../core/environments/constants';
+import * as commentService from '../../../core/services/commentService';
+import commentReducer from '../../../reducers/commentReducer';
+import { commentValidation } from './commentValidation';
 
 const initialValues = {
-    commentInput: '',
+    [CommentForm.CommentArea]: '',
 };
 
 export default function CatalogItem({
@@ -24,21 +32,33 @@ export default function CatalogItem({
     _id,
 }) {
     const [showDetails, setShowDetails] = useState(false);
-
-    const { values, handleChange, handleSubmit } = useFormik({
-        initialValues,
-        onSubmit,
-    });
-
+    const [showAllComments, setShowAllComments] = useState(false);
+    const [comments, dispatch] = useReducer(commentReducer, []);
     const { avatar, username, userId } = useContext(AuthContext);
+    const { values, isSubmitting, handleChange, handleSubmit, resetForm } =
+        useFormik({
+            initialValues,
+            onSubmit,
+            validationSchema: commentValidation,
+        });
 
-    const inputRef = useRef(null);
+    useEffect(() => {
+        commentService.getAllComments(_id).then((result) => {
+            dispatch({
+                type: CommentActions.GetAllComment,
+                payload: result,
+            });
+            console.log(result);
+        });
+    }, []);
+
+    const textareaRef = useRef(null);
     const mediaSectionRef = useRef(null);
 
     const focusInput = () => {
-        if (inputRef.current && mediaSectionRef.current) {
+        if (textareaRef.current && mediaSectionRef.current) {
             mediaSectionRef.current.scrollIntoView();
-            inputRef.current.focus();
+            textareaRef.current.focus();
         }
     };
 
@@ -49,9 +69,26 @@ export default function CatalogItem({
         });
     };
 
-    // Submit fucntion for comment
-    function onSubmit(values) {
-        console.log(values);
+    const showAllCommentsToggle = () => setShowAllComments(!showAllComments);
+
+    async function onSubmit(values) {
+        try {
+            const newComment = await commentService.createComment(
+                _id,
+                values[CommentForm.CommentArea]
+            );
+
+            newComment.owner = { username, avatar };
+
+            dispatch({
+                type: CommentActions.CreateComment,
+                payload: newComment,
+            });
+
+            resetForm();
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -114,7 +151,12 @@ export default function CatalogItem({
                     <i className="fa-solid fa-thumbs-up"></i>
                     <p>0</p>
                 </div>
-                <p className={styles['comments-count']}>0 comments</p>
+                <p
+                    onClick={showAllCommentsToggle}
+                    className={styles['comments-count']}
+                >
+                    {comments.length} comments
+                </p>
             </section>
             <section className={styles['buttons']}>
                 <div className={styles['like-button']}>
@@ -130,17 +172,61 @@ export default function CatalogItem({
                 </div>
             </section>
             <section className={styles['comments']}>
-                <div className={styles['comment']}>
-                    <img
-                        className={styles['comment-user-img']}
-                        src="https://th.bing.com/th/id/R.0d6c0a0be6b59fe6fde4953fa6d820d2?rik=9Yk6lg8aU5xoww&riu=http%3a%2f%2fcdnfiles.hdrcreme.com%2fwebsite%2fassets%2fprofile%2f7224%2fthumb%2fthumb_user_default.png%3f1338030307&ehk=Mvz8YPRO%2bZfjexGhoeNfkoX84zH2X0krEVkT7sS59Y0%3d&risl=&pid=ImgRaw&r=0"
-                        alt="user"
-                    />
-                    <div className={styles['comment-info']}>
-                        <p className={styles['username']}>Comment User Name</p>
-                        <p className={styles['description']}>First Comment</p>
-                    </div>
-                </div>
+                <ul>
+                    {showAllComments
+                        ? comments.map(({ _id, commentData, owner }) => (
+                              <li key={_id} className={styles['comment']}>
+                                  <img
+                                      className={styles['comment-user-img']}
+                                      src={
+                                          owner?.avatar ||
+                                          '/images/default-profile-pic.png'
+                                      }
+                                      alt="user"
+                                  />
+                                  <div className={styles['comment-info']}>
+                                      <p className={styles['username']}>
+                                          {owner.username}
+                                      </p>
+                                      <p className={styles['description']}>
+                                          {commentData}
+                                      </p>
+                                  </div>
+                              </li>
+                          ))
+                        : comments
+                              .slice(-2)
+                              .map(({ _id, commentData, owner }) => (
+                                  <li key={_id} className={styles['comment']}>
+                                      <img
+                                          className={styles['comment-user-img']}
+                                          src={
+                                              owner?.avatar ||
+                                              '/images/default-profile-pic.png'
+                                          }
+                                          alt="user"
+                                      />
+                                      <div className={styles['comment-info']}>
+                                          <p className={styles['username']}>
+                                              {owner.username}
+                                          </p>
+                                          <p className={styles['description']}>
+                                              {commentData}
+                                          </p>
+                                      </div>
+                                  </li>
+                              ))}
+                </ul>
+                {comments.length > 0 && (
+                    <p
+                        onClick={showAllCommentsToggle}
+                        className={styles['all-comments']}
+                    >
+                        {showAllComments
+                            ? 'Hide comments'
+                            : 'View all comments'}
+                    </p>
+                )}
             </section>
             <section className={styles['add-comment']}>
                 <img
@@ -153,20 +239,24 @@ export default function CatalogItem({
                         className={styles['comment-form']}
                         onSubmit={handleSubmit}
                     >
-                        <label htmlFor="commentInput"></label>
-                        <input
-                            ref={inputRef}
+                        <label
+                            htmlFor={values[CommentForm.CommentArea]}
+                        ></label>
+                        <textarea
+                            ref={textareaRef}
                             className={styles['comment-input']}
-                            type="text"
+                            cols="1"
+                            rows="1"
                             placeholder="Write a comment..."
-                            name="commentInput"
-                            id="commentInput"
+                            name={CommentForm.CommentArea}
+                            id={CommentForm.CommentArea}
                             onChange={handleChange}
-                            value={values.commentInput}
-                        />
+                            value={values[CommentForm.CommentArea]}
+                        ></textarea>
                         <button
                             className={styles['submit-form-button']}
                             type="submit"
+                            disabled={isSubmitting}
                         >
                             <i className="fa-solid fa-paper-plane"></i>
                         </button>
