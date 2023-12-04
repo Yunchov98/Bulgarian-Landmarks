@@ -200,7 +200,7 @@ export default function CreatePost() {
                             className={styles['input-button']}
                             type="submit"
                             disabled={isSubmitting}
-                            value="Create Post"
+                            value={isSubmitting ? 'Creating...' : 'Create Post'}
                         />
                     </div>
                 </form>
