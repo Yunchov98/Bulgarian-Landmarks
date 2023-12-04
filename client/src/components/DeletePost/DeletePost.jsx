@@ -3,12 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import { PATH } from '../../core/environments/constants';
 import styles from './DeletePost.module.css';
 import * as postService from '../../core/services/postService';
+import { useState } from 'react';
 
 export default function DeletePost({ postId, onClose }) {
     const navigate = useNavigate();
+    const [isDeleting, setIsDeleting] = useState(false);
 
     const deleteButtonClickHandler = async () => {
         try {
+            setIsDeleting(true);
+
             await postService.deletePost(postId);
 
             navigate(PATH.success);
@@ -37,7 +41,7 @@ export default function DeletePost({ postId, onClose }) {
                     onClick={deleteButtonClickHandler}
                     className={styles['delete-button']}
                 >
-                    Delete
+                    {isDeleting ? 'Deleting...' : 'Delete'}
                 </p>
             </div>
         </section>
