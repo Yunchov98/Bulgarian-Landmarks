@@ -28,23 +28,29 @@ export default function EditPost() {
             .catch((err) => console.log(err));
     }, [postId]);
 
-    const { values, errors, touched, handleChange, handleSubmit, handleBlur } =
-        useFormik({
-            initialValues: {
-                [EditFormKeys.LandmarkTitle]:
-                    postData[EditFormKeys.LandmarkTitle] || '',
-                [EditFormKeys.Location]: postData[EditFormKeys.Location] || '',
-                [EditFormKeys.PostDescription]:
-                    postData[EditFormKeys.PostDescription] || '',
-                [EditFormKeys.LandmarkDescription]:
-                    postData[EditFormKeys.LandmarkDescription] || '',
-                [EditFormKeys.PostImage]:
-                    postData[EditFormKeys.PostImage] || '',
-            },
-            onSubmit,
-            validationSchema: editValidation,
-            enableReinitialize: true,
-        });
+    const {
+        values,
+        errors,
+        touched,
+        isSubmitting,
+        handleChange,
+        handleSubmit,
+        handleBlur,
+    } = useFormik({
+        initialValues: {
+            [EditFormKeys.LandmarkTitle]:
+                postData[EditFormKeys.LandmarkTitle] || '',
+            [EditFormKeys.Location]: postData[EditFormKeys.Location] || '',
+            [EditFormKeys.PostDescription]:
+                postData[EditFormKeys.PostDescription] || '',
+            [EditFormKeys.LandmarkDescription]:
+                postData[EditFormKeys.LandmarkDescription] || '',
+            [EditFormKeys.PostImage]: postData[EditFormKeys.PostImage] || '',
+        },
+        onSubmit,
+        validationSchema: editValidation,
+        enableReinitialize: true,
+    });
 
     async function onSubmit(values) {
         try {
@@ -191,7 +197,8 @@ export default function EditPost() {
                         <input
                             className={styles['submit-button']}
                             type="submit"
-                            value="Update"
+                            disabled={isSubmitting}
+                            value={isSubmitting ? 'Updating...' : 'Update'}
                         />
                     </div>
                 </form>
