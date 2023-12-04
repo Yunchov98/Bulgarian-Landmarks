@@ -21,6 +21,8 @@ export const endpoints = {
     getPostById: (postId) => `data/posts/${postId}`,
     editPost: (postId) => `data/posts/${postId}`,
     deletePost: (postId) => `data/posts/${postId}`,
+    createComment: 'data/comments',
+    getAllComments: 'data/comments',
 };
 
 export const LoginFormKeys = {
@@ -52,6 +54,16 @@ export const EditFormKeys = {
     PostDescription: 'postDescription',
     LandmarkDescription: 'landmarkDescription',
     PostImage: 'postImage',
+};
+
+export const CommentForm = {
+    CommentArea: 'commentArea',
+};
+
+export const CommentActions = {
+    CreateComment: 'CREATE_COMMENT',
+    GetAllComment: 'GET_ALL_COMMENTS',
+    EditComment: 'EIT_COMMENT',
 };
 
 export const tokenName = 'accessToken';
