@@ -5,26 +5,40 @@ import AuthContext from '../../../../contexts/authContext';
 import dateConverter from '../../../../utils/dateConverter';
 
 import DeleteComment from './DeleteComment/DeleteComment';
+import EditComment from './EditComment/EditComment';
 
-export default function Comment({ comment, deleteCommentHandler }) {
+export default function Comment({
+    postId,
+    comment,
+    deleteCommentHandler,
+    editCommentHandler,
+}) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
 
     const { userId } = useContext(AuthContext);
 
+    const onEditButtonClickHandle = () => setShowEditModal(true);
+
     const onDeleteButtonClickHandle = () => setShowDeleteModal(true);
 
-    const onClose = () => setShowDeleteModal(false);
+    const closeDeleteModal = () => setShowDeleteModal(false);
+
+    const closeEditModal = () => setShowEditModal(false);
 
     return (
         <>
             {showDeleteModal ? (
-                <div onClick={onClose} className={styles['backdrop']}></div>
+                <div
+                    onClick={closeDeleteModal}
+                    className={styles['backdrop']}
+                ></div>
             ) : (
                 ''
             )}
             {showDeleteModal && (
                 <DeleteComment
-                    onClose={onClose}
+                    onClose={closeDeleteModal}
                     deleteCommentHandler={deleteCommentHandler}
                     comment={comment}
                 />
@@ -48,15 +62,27 @@ export default function Comment({ comment, deleteCommentHandler }) {
                     <p className={styles['posted-on']}>
                         Posted on: {dateConverter(comment._createdOn)}
                     </p>
-                    <p className={styles['description']}>
-                        {comment.commentData}
-                    </p>
+                    <div className={styles['description']}>
+                        {showEditModal ? (
+                            <EditComment
+                                postId={postId}
+                                editCommentHandler={editCommentHandler}
+                                onClose={closeEditModal}
+                                comment={comment}
+                            />
+                        ) : (
+                            comment.commentData
+                        )}
+                    </div>
                 </div>
 
                 {userId === comment._ownerId && (
                     <div className={styles['buttons']}>
                         <p className={styles['edit-button']}>
-                            <i className="fa-solid fa-pen-to-square"></i>
+                            <i
+                                onClick={onEditButtonClickHandle}
+                                className="fa-solid fa-pen-to-square"
+                            ></i>
                         </p>
                         <p className={styles['delete-button']}>
                             <i
