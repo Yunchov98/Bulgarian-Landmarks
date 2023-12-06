@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import { PATH, RegisterFormKeys } from '../../core/environments/constants';
 import { toBase64 } from '../../utils/base64';
 import styles from './Register.module.css';
-import registerValidation from './RegisterValidation';
+import registerValidation from './registerValidation';
 import AuthContext from '../../contexts/authContext';
 
 const initialValues = {
