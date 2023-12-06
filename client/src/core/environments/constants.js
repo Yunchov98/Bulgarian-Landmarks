@@ -23,6 +23,7 @@ export const endpoints = {
     deletePost: (postId) => `data/posts/${postId}`,
     createComment: 'data/comments',
     getAllComments: 'data/comments',
+    editComment: (commentId) => `data/comments/${commentId}`,
     deleteComment: (commentId) => `data/comments/${commentId}`,
 };
 
@@ -66,6 +67,10 @@ export const CommentActions = {
     GetAllComment: 'GET_ALL_COMMENTS',
     EditComment: 'EDIT_COMMENT',
     DeleteComment: 'DELETE_COMMENT',
+};
+
+export const EditCommentKeys = {
+    EditComment: 'editComment',
 };
 
 export const tokenName = 'accessToken';
