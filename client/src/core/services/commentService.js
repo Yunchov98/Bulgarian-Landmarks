@@ -21,6 +21,15 @@ export const getAllComments = async (postId) => {
     return result;
 };
 
+export const editComment = async (commentId, postId, commentData) => {
+    const result = await requset.put(endpoints.editComment(commentId), {
+        postId,
+        commentData,
+    });
+
+    return result;
+};
+
 export const deleteComment = async (commentId) => {
     return await requset.remove(endpoints.deleteComment(commentId));
 };
