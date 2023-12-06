@@ -12,6 +12,6 @@ export const login = async (email, password) => {
 };
 
 export const register = async (values) =>
-    request.post(endpoints.register, values);
+    await request.post(endpoints.register, values);
 
 export const logout = async () => request.get(endpoints.logout);
