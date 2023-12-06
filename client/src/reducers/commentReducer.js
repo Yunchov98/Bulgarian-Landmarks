@@ -9,9 +9,11 @@ const commentReducer = (state, action) => {
         case CommentActions.EditComment:
             return state.map((c) =>
                 c._id === action.payload._id
-                    ? { ...c, text: action.payload.tex }
+                    ? { ...c, text: action.payload.text }
                     : c
             );
+        case CommentActions.DeleteComment:
+            return state.filter((c) => c._id !== action.payload._id);
         default:
             return state;
     }
