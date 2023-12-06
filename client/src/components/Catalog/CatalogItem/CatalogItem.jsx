@@ -1,20 +1,21 @@
 import { useContext, useEffect, useReducer, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 
-import PostDetails from '../../PostDetails/PostDetails';
-
-import { Link } from 'react-router-dom';
+import { commentValidation } from './commentValidation';
 import {
     CommentForm,
     PATH,
     CommentActions,
 } from '../../../core/environments/constants';
-import styles from './CatalogItem.module.css';
 import AuthContext from '../../../contexts/authContext';
-import dateConverter from '../../../utils/dateConverter';
-import * as commentService from '../../../core/services/commentService';
 import commentReducer from '../../../reducers/commentReducer';
-import { commentValidation } from './commentValidation';
+import styles from './CatalogItem.module.css';
+import * as commentService from '../../../core/services/commentService';
+import dateConverter from '../../../utils/dateConverter';
+
+import PostDetails from '../../PostDetails/PostDetails';
+import Comment from './Comment/Comments';
 
 const initialValues = {
     [CommentForm.CommentArea]: '',
@@ -48,7 +49,6 @@ export default function CatalogItem({
                 type: CommentActions.GetAllComment,
                 payload: result,
             });
-            console.log(result);
         });
     }, []);
 
@@ -89,6 +89,13 @@ export default function CatalogItem({
         } catch (error) {
             console.log(error);
         }
+    }
+
+    function deleteCommentHandler(comment) {
+        dispatch({
+            type: CommentActions.DeleteComment,
+            payload: comment,
+        });
     }
 
     return (
@@ -174,50 +181,34 @@ export default function CatalogItem({
             <section className={styles['comments']}>
                 <ul>
                     {showAllComments
-                        ? comments.map(({ _id, commentData, owner }) => (
-                              <li key={_id} className={styles['comment']}>
-                                  <img
-                                      className={styles['comment-user-img']}
-                                      src={
-                                          owner?.avatar ||
-                                          '/images/default-profile-pic.png'
+                        ? comments.map((comment) => (
+                              <li
+                                  key={comment._id}
+                                  className={styles['comment']}
+                              >
+                                  <Comment
+                                      comment={comment}
+                                      deleteCommentHandler={
+                                          deleteCommentHandler
                                       }
-                                      alt="user"
                                   />
-                                  <div className={styles['comment-info']}>
-                                      <p className={styles['username']}>
-                                          {owner.username}
-                                      </p>
-                                      <p className={styles['description']}>
-                                          {commentData}
-                                      </p>
-                                  </div>
                               </li>
                           ))
-                        : comments
-                              .slice(-2)
-                              .map(({ _id, commentData, owner }) => (
-                                  <li key={_id} className={styles['comment']}>
-                                      <img
-                                          className={styles['comment-user-img']}
-                                          src={
-                                              owner?.avatar ||
-                                              '/images/default-profile-pic.png'
-                                          }
-                                          alt="user"
-                                      />
-                                      <div className={styles['comment-info']}>
-                                          <p className={styles['username']}>
-                                              {owner.username}
-                                          </p>
-                                          <p className={styles['description']}>
-                                              {commentData}
-                                          </p>
-                                      </div>
-                                  </li>
-                              ))}
+                        : comments.slice(-2).map((comment) => (
+                              <li
+                                  key={comment._id}
+                                  className={styles['comment']}
+                              >
+                                  <Comment
+                                      comment={comment}
+                                      deleteCommentHandler={
+                                          deleteCommentHandler
+                                      }
+                                  />
+                              </li>
+                          ))}
                 </ul>
-                {comments.length > 0 && (
+                {comments.length > 2 && (
                     <p
                         onClick={showAllCommentsToggle}
                         className={styles['all-comments']}
@@ -226,6 +217,9 @@ export default function CatalogItem({
                             ? 'Hide comments'
                             : 'View all comments'}
                     </p>
+                )}
+                {comments.length === 0 && (
+                    <p className={styles['no-comments']}>No comments yet.</p>
                 )}
             </section>
             <section className={styles['add-comment']}>
@@ -254,11 +248,21 @@ export default function CatalogItem({
                             value={values[CommentForm.CommentArea]}
                         ></textarea>
                         <button
-                            className={styles['submit-form-button']}
+                            className={
+                                values[CommentForm.CommentArea].length === 0
+                                    ? styles['submit-form-button-error']
+                                    : styles['submit-form-button']
+                            }
                             type="submit"
                             disabled={isSubmitting}
                         >
-                            <i className="fa-solid fa-paper-plane"></i>
+                            {isSubmitting ? (
+                                <p className={styles['sending-text']}>
+                                    Sending...
+                                </p>
+                            ) : (
+                                <i className="fa-solid fa-paper-plane"></i>
+                            )}
                         </button>
                     </form>
                 </div>
