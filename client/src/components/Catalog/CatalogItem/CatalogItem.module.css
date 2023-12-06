@@ -146,31 +146,11 @@
     display: flex;
     align-items: center;
     gap: 0.5em;
+    position: relative;
 }
 
 .comment:not(:last-child) {
     margin-bottom: 0.5em;
-}
-
-.comment-info {
-    background-color: #ddd;
-    padding: 0.2em 0.4em 0.2em 0.4em;
-    border-radius: 0.7em;
-}
-
-.comment-info .username {
-    font-size: 0.6em;
-}
-
-.comment-info .description {
-    font-size: 0.7rem;
-}
-
-.comment-user-img {
-    height: 2em;
-    width: 2em;
-    border-radius: 50%;
-    aspect-ratio: 1/1;
 }
 
 .add-comment {
@@ -193,26 +173,24 @@
     width: 100%;
 }
 
-.submit-form-button {
-    position: absolute;
-    top: 0.6em;
-    right: 1em;
-    color: #aaa;
-    font-size: 0.8em;
-    cursor: no-drop;
-    border: 0;
-}
-
 .all-comments {
-    text-align: center;
-    margin-top: 0.5em;
     font-size: 0.9em;
     color: #585858;
     cursor: pointer;
+    width: fit-content;
+    margin: 1em auto 0 auto;
 }
 
 .all-comments:hover {
     text-decoration: underline;
+}
+
+.no-comments {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #585858;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .user-img-comments {
@@ -220,6 +198,35 @@
     height: 1.5em;
     aspect-ratio: 1/1;
     border-radius: 50%;
+}
+
+.sending-text {
+    cursor: default;
+    color: #369;
+}
+
+.submit-form-button {
+    position: absolute;
+    top: 0.6em;
+    right: 1em;
+    color: #aaa;
+    font-size: 0.8em;
+    cursor: pointer;
+    border: 0;
+}
+
+.submit-form-button:hover {
+    color: #369;
+}
+
+.submit-form-button-error {
+    position: absolute;
+    top: 0.6em;
+    right: 1em;
+    color: #aaa;
+    font-size: 0.8em;
+    cursor: no-drop;
+    border: 0;
 }
 
 @media screen and (width <= 390px) {
