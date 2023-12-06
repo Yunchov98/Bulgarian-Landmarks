@@ -1,5 +1,7 @@
 import * as Yup from 'yup';
 
+import { EditCommentKeys } from '../../../../../core/environments/constants';
+
 export const editCommentValidation = Yup.object({
-    editComment: Yup.string().required(),
+    [EditCommentKeys.EditComment]: Yup.string().required(),
 });
