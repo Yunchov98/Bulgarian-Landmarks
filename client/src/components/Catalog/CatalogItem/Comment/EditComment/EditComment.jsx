@@ -1,8 +1,9 @@
 import { useFormik } from 'formik';
 
+import { editCommentValidation } from './editCommentValidation';
+import { EditCommentKeys } from '../../../../../core/environments/constants';
 import * as commentService from '../../../../../core/services/commentService';
 import styles from './EditComment.module.css';
-import { editCommentValidation } from './editCommentValidation';
 
 export default function EditComment({
     onClose,
@@ -12,7 +13,7 @@ export default function EditComment({
 }) {
     const { values, isSubmitting, handleSubmit, handleChange } = useFormik({
         initialValues: {
-            editComment: comment.commentData,
+            [EditCommentKeys.EditComment]: comment.commentData,
         },
         onSubmit,
         validationSchema: editCommentValidation,
@@ -41,10 +42,10 @@ export default function EditComment({
                 onSubmit={handleSubmit}
                 className={styles['edit-commnet-form']}
             >
-                <label htmlFor="editComment"></label>
+                <label htmlFor={EditCommentKeys.EditComment}></label>
                 <textarea
-                    name="editComment"
-                    id="editComment"
+                    name={EditCommentKeys.EditComment}
+                    id={EditCommentKeys.EditComment}
                     className={styles['edit-comment-textarea']}
                     cols="30"
                     rows="3"
