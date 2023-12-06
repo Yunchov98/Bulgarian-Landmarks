@@ -91,6 +91,15 @@ export default function CatalogItem({
         }
     }
 
+    function editCommentHandler(editedComment) {
+        editedComment.owner = { username, avatar };
+
+        dispatch({
+            type: CommentActions.EditComment,
+            payload: editedComment,
+        });
+    }
+
     function deleteCommentHandler(comment) {
         dispatch({
             type: CommentActions.DeleteComment,
@@ -187,7 +196,9 @@ export default function CatalogItem({
                                   className={styles['comment']}
                               >
                                   <Comment
+                                      postId={_id}
                                       comment={comment}
+                                      editCommentHandler={editCommentHandler}
                                       deleteCommentHandler={
                                           deleteCommentHandler
                                       }
@@ -200,7 +211,9 @@ export default function CatalogItem({
                                   className={styles['comment']}
                               >
                                   <Comment
+                                      postId={_id}
                                       comment={comment}
+                                      editCommentHandler={editCommentHandler}
                                       deleteCommentHandler={
                                           deleteCommentHandler
                                       }
