@@ -9,7 +9,7 @@ const commentReducer = (state, action) => {
         case CommentActions.EditComment:
             return state.map((c) =>
                 c._id === action.payload._id
-                    ? { ...c, text: action.payload.text }
+                    ? { ...c, commentData: action.payload.commentData }
                     : c
             );
         case CommentActions.DeleteComment:
