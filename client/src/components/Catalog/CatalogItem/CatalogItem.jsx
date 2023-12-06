@@ -15,7 +15,7 @@ import * as commentService from '../../../core/services/commentService';
 import dateConverter from '../../../utils/dateConverter';
 
 import PostDetails from '../../PostDetails/PostDetails';
-import Comment from './Comment/Comments';
+import Comment from './Comment/Comment';
 
 const initialValues = {
     [CommentForm.CommentArea]: '',
