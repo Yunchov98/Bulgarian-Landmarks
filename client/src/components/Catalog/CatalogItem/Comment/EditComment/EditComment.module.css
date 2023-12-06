@@ -1,0 +1,31 @@
+.edit-comment {
+    margin-top: 0.5em;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+}
+
+.cancel-button,
+.update-button,
+.update-button-disabled {
+    border: 0;
+    background-color: inherit;
+}
+
+.update-button {
+    color: #369;
+}
+
+.update-button-disabled {
+    color: gray;
+    cursor: not-allowed;
+}
+
+.cancel-button:hover,
+.update-button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
