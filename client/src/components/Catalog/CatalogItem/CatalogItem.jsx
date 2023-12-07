@@ -1,5 +1,5 @@
 import { useContext, useEffect, useReducer, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 
 import { commentValidation } from './commentValidation';
@@ -9,9 +9,11 @@ import {
     CommentActions,
 } from '../../../core/environments/constants';
 import AuthContext from '../../../contexts/authContext';
-import commentReducer from '../../../reducers/commentReducer';
 import styles from './CatalogItem.module.css';
 import * as commentService from '../../../core/services/commentService';
+import * as postService from '../../../core/services/postService';
+import likeReducer from '../../../reducers/likeReducer';
+import commentReducer from '../../../reducers/commentReducer';
 import dateConverter from '../../../utils/dateConverter';
 
 import PostDetails from '../../PostDetails/PostDetails';
@@ -34,8 +36,15 @@ export default function CatalogItem({
 }) {
     const [showDetails, setShowDetails] = useState(false);
     const [showAllComments, setShowAllComments] = useState(false);
-    const [comments, dispatch] = useReducer(commentReducer, []);
-    const { avatar, username, userId } = useContext(AuthContext);
+    const [canLike, setCanLike] = useState(true);
+    const [comments, dispatchComment] = useReducer(commentReducer, []);
+    const [likes, dispatchLike] = useReducer(likeReducer, []);
+
+    const navigate = useNavigate();
+
+    const { avatar, username, userId, isAuthenticated } =
+        useContext(AuthContext);
+
     const { values, isSubmitting, handleChange, handleSubmit, resetForm } =
         useFormik({
             initialValues,
@@ -45,12 +54,23 @@ export default function CatalogItem({
 
     useEffect(() => {
         commentService.getAllComments(_id).then((result) => {
-            dispatch({
+            dispatchComment({
                 type: CommentActions.GetAllComment,
                 payload: result,
             });
         });
-    }, []);
+
+        postService.getAllLikes(_id).then((result) => {
+            dispatchLike({
+                type: 'getLikes',
+                payload: result,
+            });
+        });
+
+        postService
+            .canLike(_id, userId)
+            .then((result) => setCanLike(result === 0 && isAuthenticated));
+    }, [likes.length]);
 
     const textareaRef = useRef(null);
     const mediaSectionRef = useRef(null);
@@ -80,7 +100,7 @@ export default function CatalogItem({
 
             newComment.owner = { username, avatar };
 
-            dispatch({
+            dispatchComment({
                 type: CommentActions.CreateComment,
                 payload: newComment,
             });
@@ -94,17 +114,50 @@ export default function CatalogItem({
     function editCommentHandler(editedComment) {
         editedComment.owner = { username, avatar };
 
-        dispatch({
+        dispatchComment({
             type: CommentActions.EditComment,
             payload: editedComment,
         });
     }
 
     function deleteCommentHandler(comment) {
-        dispatch({
+        dispatchComment({
             type: CommentActions.DeleteComment,
             payload: comment,
         });
+    }
+
+    async function addLikeHandler() {
+        try {
+            if (canLike) {
+                const like = await postService.addLike(_id);
+
+                dispatchLike({
+                    type: 'addLike',
+                    payload: like,
+                });
+            } else {
+                if (!isAuthenticated) {
+                    navigate(PATH.login);
+                    return;
+                }
+
+                const result = await postService.getCurrentLike(_id, userId);
+                let like;
+                result.map((l) =>
+                    l._ownerId === userId ? (like = { ...l }) : ''
+                );
+
+                await postService.removeLike(like._id);
+
+                dispatchLike({
+                    type: 'removeLike',
+                    payload: like,
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -165,7 +218,7 @@ export default function CatalogItem({
             <section className={styles['likes']}>
                 <div className={styles['likes-count']}>
                     <i className="fa-solid fa-thumbs-up"></i>
-                    <p>0</p>
+                    <p>{likes.length}</p>
                 </div>
                 <p
                     onClick={showAllCommentsToggle}
@@ -175,10 +228,26 @@ export default function CatalogItem({
                 </p>
             </section>
             <section className={styles['buttons']}>
-                <div className={styles['like-button']}>
-                    <i className="fa-solid fa-thumbs-up"></i>
-                    <p>Like</p>
-                </div>
+                {!isAuthenticated && (
+                    <div
+                        onClick={addLikeHandler}
+                        className={styles['like-button']}
+                    >
+                        <i className="fa-solid fa-thumbs-up"></i>
+                        <p>Like</p>
+                    </div>
+                )}
+                {isAuthenticated && (
+                    <div
+                        onClick={addLikeHandler}
+                        className={
+                            canLike ? styles['like-button'] : styles['is-liked']
+                        }
+                    >
+                        <i className="fa-solid fa-thumbs-up"></i>
+                        <p>Like</p>
+                    </div>
+                )}
                 <div
                     onClick={focusInput}
                     className={styles['comment-button-wrapper']}
