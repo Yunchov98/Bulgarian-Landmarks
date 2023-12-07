@@ -25,6 +25,11 @@ export const endpoints = {
     getAllComments: 'data/comments',
     editComment: (commentId) => `data/comments/${commentId}`,
     deleteComment: (commentId) => `data/comments/${commentId}`,
+    likePost: 'data/likes',
+    getCurrentPostLikes: (postId) => `data/likes/${postId}`,
+    removeLike: (likeId) => `data/likes/${likeId}`,
+    canLike: (postId, userId) =>
+        `data/likes?where=postId%3D%22${postId}%22%20and%20_ownerId%3D%22${userId}%22&count`,
 };
 
 export const LoginFormKeys = {
