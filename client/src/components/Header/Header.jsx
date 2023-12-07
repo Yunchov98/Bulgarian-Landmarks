@@ -160,6 +160,9 @@ export default function Header() {
                         ) : (
                             <div className={styles['guest']}>
                                 <li>
+                                    <Link to={PATH.catalog}>Posts</Link>
+                                </li>
+                                <li>
                                     <Link to={PATH.login}>Log In</Link>
                                 </li>
                                 <li>
