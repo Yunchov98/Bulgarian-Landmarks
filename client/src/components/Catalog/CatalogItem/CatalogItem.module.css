@@ -129,6 +129,10 @@
     color: #797979;
 }
 
+.is-liked {
+    color: #369;
+}
+
 .comment-button {
     text-decoration: none;
 }
