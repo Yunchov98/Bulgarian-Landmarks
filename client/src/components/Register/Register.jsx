@@ -37,12 +37,15 @@ export default function Register() {
         onSubmit,
     });
 
-    const { registerSubmitHandler } = useContext(AuthContext);
+    const { registerSubmitHandler, createUserProfileHandler } =
+        useContext(AuthContext);
 
     async function onSubmit(values) {
         values.avatar = await toBase64(values.avatar[0]);
 
         await registerSubmitHandler(values);
+
+        await createUserProfileHandler(values);
     }
 
     const passwordVisibilityToggle = () => {
