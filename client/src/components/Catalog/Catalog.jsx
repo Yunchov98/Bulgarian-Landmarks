@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import styles from './Catalog.module.css';
-import CatalogItem from './CatalogItem/CatalogItem';
 import * as postService from '../../core/services/postService';
+
+import CatalogItem from './CatalogItem/CatalogItem';
 import Spinner from '../Spinner/Spinner';
 
 export default function Catalog() {
