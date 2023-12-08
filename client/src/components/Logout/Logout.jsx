@@ -18,7 +18,7 @@ export default function Logout() {
             })
             .catch(() => {
                 logoutHandler();
-                navigate(PATH.home);
+                navigate(PATH.login);
             });
     }, []);
 
