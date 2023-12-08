@@ -177,14 +177,16 @@ export default function CatalogItem({
             <section className={styles['user-info']}>
                 <div className={styles['user-info-wrapper']}>
                     <div className={styles['img-container']}>
-                        <img
-                            className={styles['user-img']}
-                            src={
-                                owner.avatar ||
-                                '/images/default-profile-pic.png'
-                            }
-                            alt="User profile pic"
-                        />
+                        <Link to={PATH.userProfile(owner._id)}>
+                            <img
+                                className={styles['user-img']}
+                                src={
+                                    owner.avatar ||
+                                    '/images/default-profile-pic.png'
+                                }
+                                alt="User profile pic"
+                            />
+                        </Link>
                     </div>
                     <div className={styles['post-info']}>
                         <p className={styles['username']}>{owner.username}</p>
