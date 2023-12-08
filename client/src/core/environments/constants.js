@@ -6,16 +6,21 @@ export const PATH = {
     register: '/users/register',
     logout: '/users/logout',
     catalog: '/posts',
-    edit: 'posts/edit/:postId',
+    edit: '/posts/edit/:postId',
     createPost: '/create-post',
     success: '/success',
     editPost: (postId) => `/posts/edit/${postId}`,
+    profile: '/users/:userId',
+    userProfile: (userId) => `/users/${userId}`,
 };
 
 export const endpoints = {
     login: 'users/login',
     register: 'users/register',
     logout: 'users/logout',
+    profile: 'data/profiles',
+    getCurrentUserInfo: (userId) => `data/profiles/${userId}`,
+    getUserPosts: (userId) => `data/posts/${userId}`,
     createPost: 'data/posts',
     getPosts: 'data/posts',
     getPostById: (postId) => `data/posts/${postId}`,
