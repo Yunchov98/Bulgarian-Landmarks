@@ -1,6 +1,12 @@
 import { endpoints } from '../environments/constants';
 import * as request from '../../lib/request';
 
+export const getAllUsers = async () => {
+    const result = await request.get(endpoints.profile);
+
+    return result;
+};
+
 export const getUserPosts = async (userId) => {
     const query = new URLSearchParams({
         where: `_ownerId="${userId}"`,
