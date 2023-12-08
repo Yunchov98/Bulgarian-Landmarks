@@ -38,18 +38,20 @@ export default function Header() {
                         Bulgarian Landmarks
                     </Link>
                 </h2>
-                <form onClick={hideMenus} className={styles['search-form']}>
-                    <input
-                        className={styles['search-bar']}
-                        type="search"
-                        name="search"
-                        id="search"
-                        placeholder="Search..."
-                    />
-                    <button className={styles['search-button']}>
-                        <i className="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </form>
+                <Link to={PATH.search}>
+                    <div onClick={hideMenus} className={styles['search-form']}>
+                        <input
+                            className={styles['search-bar']}
+                            type="button"
+                            name="search"
+                            id="search"
+                            value="Search..."
+                        />
+                        <button className={styles['search-button']}>
+                            <i className="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </Link>
                 <nav className={styles['main-nav']}>
                     <ul className={styles['main-ul']}>
                         {isAuthenticated ? (
@@ -125,7 +127,11 @@ export default function Header() {
                                             className={styles['inner-nav']}
                                         >
                                             <li className={styles['user-info']}>
-                                                <Link to={PATH.userProfile(userId)}>
+                                                <Link
+                                                    to={PATH.userProfile(
+                                                        userId
+                                                    )}
+                                                >
                                                     <img
                                                         src={
                                                             avatar ||
