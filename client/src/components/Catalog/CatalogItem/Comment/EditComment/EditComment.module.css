@@ -29,3 +29,9 @@
     cursor: pointer;
     transform: scale(1.1);
 }
+
+@media (width < 450px) {
+    .edit-comment-textarea {
+        padding: 0.3em 0.3em;
+    }
+}
