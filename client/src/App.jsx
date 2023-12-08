@@ -17,6 +17,7 @@ import LoggedInGuard from './guards/LoggedInGuard';
 import Logout from './components/Logout/Logout';
 import EditPost from './components/EditPost/EditPost';
 import Success from './components/Success/Success';
+import UserProfile from './components/UserProfile/UserProfile';
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                     <Routes>
                         <Route path={PATH.home} element={<Home />} />
                         <Route path={PATH.catalog} element={<Catalog />} />
+                        <Route path={PATH.profile} element={<UserProfile />} />
                         <Route element={<AuthGuard />}>
                             <Route path={PATH.success} element={<Success />} />
                             <Route
