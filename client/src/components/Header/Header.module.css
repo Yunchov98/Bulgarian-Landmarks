@@ -35,7 +35,6 @@
 
 .search-button {
     background-color: #ddd;
-    cursor: pointer;
     border-top-right-radius: 1em;
     border-bottom-right-radius: 1em;
     text-align: center;
@@ -202,6 +201,20 @@
 
 .logout p a {
     margin: 0;
+}
+
+.from-wrapper {
+    position: relative;
+}
+
+.search-section {
+    position: absolute;
+    top: 3.2em;
+    left: 19em;
+    background-color: #fff;
+    width: 25em;
+    padding: 0.5em 2em;
+    z-index: 100000;
 }
 
 @keyframes show-up {
