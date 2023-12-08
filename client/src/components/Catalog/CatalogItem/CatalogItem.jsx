@@ -333,12 +333,13 @@ export default function CatalogItem({
                         ></textarea>
                         <button
                             className={
-                                values[CommentForm.CommentArea].length === 0
+                                values[CommentForm.CommentArea].length === 0 ||
+                                !isAuthenticated
                                     ? styles['submit-form-button-error']
                                     : styles['submit-form-button']
                             }
                             type="submit"
-                            disabled={isSubmitting}
+                            disabled={isSubmitting || !isAuthenticated}
                         >
                             {isSubmitting ? (
                                 <p className={styles['sending-text']}>
