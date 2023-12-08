@@ -15,3 +15,6 @@ export const register = async (values) =>
     await request.post(endpoints.register, values);
 
 export const logout = async () => request.get(endpoints.logout);
+
+export const createProfile = async (values) =>
+    await request.post(endpoints.profile, values);
