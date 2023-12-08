@@ -1,0 +1,257 @@
+.post-item {
+    background-color: #fff;
+    overflow: hidden;
+    width: 33em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.2em 0.1em #ddd;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-info .edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 1em 0.5em 1em;
+    color: #585858;
+    gap: 1em;
+}
+
+.user-info .edit a {
+    color: #585858;
+}
+
+.media img {
+    max-width: 100%;
+    height: auto;
+}
+
+.view-more {
+    margin: 1em 1em 0 1em;
+    cursor: pointer;
+    color: #585858;
+}
+
+.user-info .edit > * {
+    cursor: pointer;
+}
+
+.user-info-wrapper {
+    display: flex;
+    gap: 1em;
+    padding: 0.5em 1em 0.5em 1em;
+    align-items: center;
+}
+
+.user-img {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+}
+
+.username {
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.posted-on {
+    font-size: 0.6em;
+    color: rgb(99, 99, 99);
+}
+
+.location-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.1em;
+}
+
+.location-wrapper i {
+    font-size: 0.7em;
+    color: #636363;
+}
+
+.content-description,
+.likes {
+    padding: 0 1em 0.5em 1em;
+    font-size: 0.9em;
+}
+
+.likes {
+    display: flex;
+    justify-content: space-between;
+    color: #636363;
+}
+
+.likes-count {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+}
+
+.likes-count i {
+    color: #369;
+}
+
+.likes-count i,
+.likes .comments-count {
+    padding-right: 0.2em;
+}
+
+.comments-count {
+    cursor: pointer;
+}
+
+.comments-count:hover {
+    text-decoration: underline;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.buttons > * {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    cursor: pointer;
+    padding: 0 2em 0 2em;
+}
+
+.like-button,
+.comment-button-wrapper,
+.comment-button {
+    color: #797979;
+}
+
+.is-liked {
+    color: #369;
+}
+
+.comment-button {
+    text-decoration: none;
+}
+
+.like-button:hover,
+.comment-button-wrapper:hover {
+    background-color: #eee;
+}
+
+.comments {
+    padding: 1em 1em 0.5em 1em;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    position: relative;
+}
+
+.comment:not(:last-child) {
+    margin-bottom: 0.5em;
+}
+
+.add-comment {
+    display: flex;
+    align-items: center;
+    padding: 0.2em 1em 0.5em 1em;
+    gap: 0.2em;
+}
+
+.comment-area {
+    position: relative;
+    width: 100%;
+}
+
+.comment-input {
+    padding: 0.8em 0 0.8em 2em;
+    border-radius: 0.4em;
+    border: 0;
+    background-color: #eee;
+    width: 100%;
+}
+
+.all-comments {
+    font-size: 0.9em;
+    color: #585858;
+    cursor: pointer;
+    width: fit-content;
+    margin: 1em auto 0 auto;
+}
+
+.all-comments:hover {
+    text-decoration: underline;
+}
+
+.no-comments {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #585858;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.user-img-comments {
+    width: 1.5em;
+    height: 1.5em;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+.sending-text {
+    cursor: default;
+    color: #369;
+}
+
+.submit-form-button {
+    position: absolute;
+    top: 0.6em;
+    right: 1em;
+    color: #aaa;
+    font-size: 0.8em;
+    cursor: pointer;
+    border: 0;
+}
+
+.submit-form-button:hover {
+    color: #369;
+}
+
+.submit-form-button-error {
+    position: absolute;
+    top: 0.6em;
+    right: 1em;
+    color: #aaa;
+    font-size: 0.8em;
+    cursor: no-drop;
+    border: 0;
+}
+
+@media screen and (width <= 390px) {
+    .comment-input {
+        margin-top: 0.5em;
+        padding: 0.2em 0;
+        font-size: 1em;
+        border-radius: 0.4em;
+        border: 0;
+        background-color: #eee;
+        width: 100%;
+    }
+
+    .comment-area i {
+        top: 1.1em;
+        right: 1em;
+        cursor: pointer;
+    }
+}
