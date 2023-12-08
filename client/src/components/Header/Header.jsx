@@ -10,7 +10,7 @@ export default function Header() {
     const [showUserMenu, setShowUserMenu] = useState(false);
     const [showMainMenu, setShowMainMenu] = useState(false);
 
-    const { isAuthenticated, username, logoutHandler, avatar } =
+    const { isAuthenticated, username, logoutHandler, avatar, userId } =
         useContext(AuthContext);
 
     const showUserMenuToggle = () => {
@@ -125,7 +125,7 @@ export default function Header() {
                                             className={styles['inner-nav']}
                                         >
                                             <li className={styles['user-info']}>
-                                                <Link to={'#'}>
+                                                <Link to={PATH.userProfile(userId)}>
                                                     <img
                                                         src={
                                                             avatar ||
