@@ -3,13 +3,14 @@ import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
 
 import { PATH } from '../../core/environments/constants';
+import { SearchKeys } from '../../core/environments/constants';
 import styles from './Search.module.css';
 import * as userService from '../../core/services/userService';
 
 import Spinner from '../Spinner/Spinner';
 
 const initialValues = {
-    search: '',
+    [SearchKeys.Search]: '',
 };
 
 export default function Search() {
@@ -49,11 +50,11 @@ export default function Search() {
                 <input
                     className={styles['search-bar']}
                     type="text"
-                    name="search"
-                    id="search"
+                    name={SearchKeys.Search}
+                    id={SearchKeys.Search}
                     placeholder="Search..."
                     onChange={handleChange}
-                    value={values.search}
+                    value={values[SearchKeys.Search]}
                 />
                 <input
                     className={styles['search-button']}
