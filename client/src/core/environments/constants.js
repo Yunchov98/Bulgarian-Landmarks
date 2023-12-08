@@ -6,12 +6,14 @@ export const PATH = {
     register: '/users/register',
     logout: '/users/logout',
     catalog: '/posts',
+    search: '/search',
     edit: '/posts/edit/:postId',
     createPost: '/create-post',
     success: '/success',
     editPost: (postId) => `/posts/edit/${postId}`,
     profile: '/users/:userId',
     userProfile: (userId) => `/users/${userId}`,
+    notFound: '*',
 };
 
 export const endpoints = {
@@ -81,6 +83,10 @@ export const CommentActions = {
 
 export const EditCommentKeys = {
     EditComment: 'editComment',
+};
+
+export const SearchKeys = {
+    Search: 'search',
 };
 
 export const tokenName = 'accessToken';
