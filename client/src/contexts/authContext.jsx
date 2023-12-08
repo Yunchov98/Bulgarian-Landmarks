@@ -53,10 +53,29 @@ export const AuthProvider = ({ children }) => {
         navigate(PATH.home);
     };
 
+    const createUserProfileHandler = async ({
+        email,
+        username,
+        avatar,
+        bornDate,
+        gender,
+        password,
+    }) => {
+        await authService.createProfile({
+            email,
+            username,
+            avatar,
+            bornDate,
+            gender,
+            password,
+        });
+    };
+
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
         logoutHandler,
+        createUserProfileHandler,
         userId: auth._id,
         email: auth.email,
         username: auth.username,
