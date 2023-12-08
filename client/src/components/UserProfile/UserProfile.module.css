@@ -1,0 +1,71 @@
+.user-profile {
+    background-color: #ccc;
+    min-height: 100vh;
+    padding-bottom: 2em;
+}
+
+.profile-header {
+    background-color: #ddd;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 2em;
+    justify-content: space-evenly;
+}
+
+.profile-pic {
+    width: 6em;
+    height: 6em;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+}
+
+.most-liked-posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2em;
+}
+
+.section-heading {
+    margin-bottom: 1em;
+}
+
+.username {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.update-button {
+    background-color: #369;
+    color: #fff;
+    padding: 0.8em 2em;
+    cursor: pointer;
+    border-radius: 0.3em;
+}
+
+.update-button:active {
+    filter: brightness(90%);
+}
+
+@media (width < 500px) {
+    .update-button {
+        padding: 0.4em 0.8em;
+    }
+}
