@@ -15,7 +15,7 @@ export default function Hero() {
                 <ul>
                     <li>
                         <img src="images/R.jpg" alt="img" />
-                        <p>Aleksander Nevski</p>
+                        <p>Alexander Nevski</p>
                     </li>
                     <li>
                         <img src="images/Belogradchik.jpg" alt="img" />
