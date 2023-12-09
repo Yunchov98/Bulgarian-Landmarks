@@ -51,6 +51,7 @@ export default function Login() {
                 <form onSubmit={handleSubmit} className={styles['login-form']}>
                     <div className={styles['email-wrapper']}>
                         <div className={styles['input-wrapper']}>
+                            <label htmlFor={LoginFormKeys.Email}></label>
                             <input
                                 className={styles['form-input']}
                                 type="text"
@@ -65,6 +66,7 @@ export default function Login() {
                     </div>
                     <div className={styles['password-wrapper']}>
                         <div className={styles['input-wrapper']}>
+                            <label htmlFor={LoginFormKeys.Password}></label>
                             <input
                                 className={styles['form-input']}
                                 type={showPassword ? 'text' : 'password'}
@@ -74,6 +76,7 @@ export default function Login() {
                                 value={values[LoginFormKeys.Password]}
                             />
                             <div
+                                data-testid="togglePassword"
                                 onClick={passwordVisibilityToggle}
                                 className={styles['show-hide-password-button']}
                             >
