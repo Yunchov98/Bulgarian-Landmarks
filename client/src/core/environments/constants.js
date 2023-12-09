@@ -1,4 +1,5 @@
-export const baseUrl = 'http://localhost:3030/';
+// export const baseUrl = 'http://localhost:3030/';
+export const baseUrl = 'https://bulgarian-landmarks-server.onrender.com/';
 
 export const PATH = {
     home: '/',
