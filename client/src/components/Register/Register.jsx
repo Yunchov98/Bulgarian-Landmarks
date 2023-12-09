@@ -21,6 +21,7 @@ const initialValues = {
 export default function Register() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfrimPassword, setShowConfirmPassword] = useState(false);
+    const [serverError, setServerError] = useState({});
 
     const {
         values,
@@ -41,11 +42,15 @@ export default function Register() {
         useContext(AuthContext);
 
     async function onSubmit(values) {
-        values.avatar = await toBase64(values.avatar[0]);
+        try {
+            values.avatar = await toBase64(values.avatar[0]);
 
-        await registerSubmitHandler(values);
+            await registerSubmitHandler(values);
 
-        await createUserProfileHandler(values);
+            await createUserProfileHandler(values);
+        } catch (error) {
+            setServerError(error);
+        }
     }
 
     const passwordVisibilityToggle = () => {
@@ -65,6 +70,11 @@ export default function Register() {
                         It's fast, easy and free.
                     </p>
                 </div>
+                {serverError && (
+                    <p className={styles['error-message']}>
+                        {serverError.message}
+                    </p>
+                )}
                 <form
                     onSubmit={handleSubmit}
                     className={styles['register-form']}
