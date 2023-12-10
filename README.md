@@ -8,7 +8,7 @@ All visitors to the site can view the posts, users profiels and comments. Only r
  3. Navigate to server folder (cd./serveer) and write npm install to install node modules, then write node server.js to start the server.
 
 ## Deployed version
-  Front-End is deployed in firebase. You can reach it here -> https://bulgarian-landmarks-686b4.web.app/
+  Front-End is deployed in firebase. You can reach it here -> https://bulgarian-landmarks-686b4.web.app/ 
   Back-End is deployed in Render
 
 ## Project Overview
